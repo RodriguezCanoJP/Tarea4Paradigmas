@@ -6,7 +6,7 @@ SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 int juego_corriendo = FALSE;
 
-int initializa_ventana(void){
+int initializa_ventana(){
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0){
         fprintf(stderr, "Error initializing SDL.\n");
         return FALSE;
@@ -55,10 +55,52 @@ void procesa_input(){
 void render(){
     SDL_SetRenderDrawColor(renderer, 80, 70, 255, 255);
     SDL_RenderClear(renderer);
+
+    for(int y=0; y < WINDOW_HEIGHT/2; y++){
+        for(int x=0; x < WINDOW_WIDTH; x++){
+            float fPerspective = (float)y / (WINDOW_HEIGHT/2);
+
+            float fPuntoMedio = 0.5f;
+            float fAnchoCalle = 0.1f  + fPerspective * 0.8f;
+            float fAnchoKerbs = fAnchoCalle * 0.15f;
+
+
+            fAnchoCalle *= 0.5;
+
+            int PastoIzquierda = (fPuntoMedio - fAnchoCalle - fAnchoKerbs) * WINDOW_WIDTH;
+            int PastoDerecha = (fPuntoMedio + fAnchoCalle + fAnchoKerbs) * WINDOW_WIDTH;
+            int KerbsIzquierda = (fPuntoMedio - fAnchoCalle) * WINDOW_WIDTH;
+            int KerbsDerecha = (fPuntoMedio + fAnchoCalle ) * WINDOW_WIDTH;
+
+            int row = WINDOW_HEIGHT/2 + y;
+
+            if(x >=0 && x < PastoIzquierda){
+                SDL_SetRenderDrawColor(renderer, 50, 255, 150, 255);
+                SDL_RenderDrawPoint(renderer, x, row);
+            }
+            if(x >= PastoIzquierda && x<KerbsIzquierda){
+                SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                SDL_RenderDrawPoint(renderer, x, row);
+            }
+            if(x >= KerbsIzquierda && x<KerbsDerecha){
+                SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255);
+                SDL_RenderDrawPoint(renderer, x, row);
+            }
+            if(x >= KerbsDerecha && x<PastoDerecha){
+                SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+                SDL_RenderDrawPoint(renderer, x, row);
+            }
+            if(x >= PastoDerecha){
+                SDL_SetRenderDrawColor(renderer, 50, 255, 150, 255);
+                SDL_RenderDrawPoint(renderer, x, row);
+            }
+        }
+    }
+
     SDL_RenderPresent(renderer);
 }
 
-void destruye_ventana(void){
+void destruye_ventana(){
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
