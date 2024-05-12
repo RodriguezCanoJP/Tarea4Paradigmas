@@ -5,10 +5,11 @@
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 int juego_corriendo = FALSE;
-float last_frame_time = 0.0f;
+float ultimo_tiempo = 0.0f;
+
 struct car{
-    float distance;
-    float speed;
+    float distancia;
+    float velocidad;
 } car;
 
 int initializa_ventana(){
@@ -43,8 +44,8 @@ int initializa_ventana(){
 }
 
 void setup(){
-    car.distance=0.0f;
-    car.speed=0.0f;
+    car.distancia=0.0f;
+    car.velocidad=0.0f;
 }
 
 void procesa_input(){
@@ -58,28 +59,30 @@ void procesa_input(){
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym) {
                 case SDLK_UP:
-                    car.speed +=1;
+                    car.velocidad+=1.0f;
                     break;
                 case SDLK_DOWN:
-                    car.speed -=1;
+                    car.velocidad = abs(car.velocidad - 2.0f);
                     break;
                 case SDLK_ESCAPE:
                     juego_corriendo = FALSE;
                     break;
+                default:
+                    car.velocidad-=abs(car.velocidad - 0.2f);;
             }
         default:
             break;
     }
 }
 void actualiza(){
-    int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_frame_time);
+    float tiempo_de_espera = FRAME_TARGET_TIME - (SDL_GetTicks() - ultimo_tiempo);
 
-    if(time_to_wait>0 && time_to_wait <= FRAME_TARGET_TIME) {
+    if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
         SDL_Delay(FRAME_TARGET_TIME);
     }
-    float delta_time = (SDL_GetTicks() - last_frame_time)*car.speed/1000.0f;
-    car.distance += delta_time;
-    last_frame_time = SDL_GetTicks();
+    float delta_time = (SDL_GetTicks() - ultimo_tiempo)/1000.0f;
+    car.distancia += delta_time * car.velocidad;
+    ultimo_tiempo = SDL_GetTicks();
 }
 
 void render(){
@@ -90,21 +93,21 @@ void render(){
         for(int x=0; x < WINDOW_WIDTH; x++){
             float fPerspective = (float)y/ (WINDOW_HEIGHT/2);
 
-            float fPuntoMedio = 0.5f;
-            float fAnchoCalle = 0.1f  + fPerspective * 0.8f;
-            float fAnchoKerbs = fAnchoCalle * 0.15f;
+            float puntoMedio = 0.5f;
+            float anchoCalle = 0.1f  + fPerspective * 0.8f;
+            float anchoKerbs = anchoCalle * 0.15f;
 
 
-            fAnchoCalle *= 0.5;
+            anchoCalle *= 0.5;
 
-            int PastoIzquierda = (fPuntoMedio - fAnchoCalle - fAnchoKerbs) * WINDOW_WIDTH;
-            int PastoDerecha = (fPuntoMedio + fAnchoCalle + fAnchoKerbs) * WINDOW_WIDTH;
-            int KerbsIzquierda = (fPuntoMedio - fAnchoCalle) * WINDOW_WIDTH;
-            int KerbsDerecha = (fPuntoMedio + fAnchoCalle ) * WINDOW_WIDTH;
+            int PastoIzquierda = (puntoMedio - anchoCalle - anchoKerbs) * WINDOW_WIDTH;
+            int PastoDerecha = (puntoMedio + anchoCalle + anchoKerbs) * WINDOW_WIDTH;
+            int KerbsIzquierda = (puntoMedio - anchoCalle) * WINDOW_WIDTH;
+            int KerbsDerecha = (puntoMedio + anchoCalle ) * WINDOW_WIDTH;
 
             int row = WINDOW_HEIGHT/2 + y;
-            int color = sinf(20.0f * powf(1-fPerspective, 3) + car.distance * 0.1f) > 0.0f? 30:80;
-            int kerbsColor = sinf(20.0f * powf(1-fPerspective, 3) + car.distance * 0.3f) > 0.0f? 0:255;
+            int color = sinf(20.0f * powf(1-fPerspective, 3) + car.distancia * 0.1f) > 0.0f? 30:80;
+            int kerbsColor = sinf(30.0f * powf(1-fPerspective, 3) + car.distancia * 0.3f) > 0.0f? 0:255;
 
 
             if(x >=0 && x < PastoIzquierda){
