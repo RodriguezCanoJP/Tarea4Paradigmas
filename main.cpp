@@ -5,7 +5,7 @@
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 int juego_corriendo = FALSE;
-
+float last_frame_time = 0.0f;
 struct car{
     float distance;
     float speed;
@@ -56,15 +56,30 @@ void procesa_input(){
             juego_corriendo = FALSE;
             break;
         case SDL_KEYDOWN:
-            if(event.key.keysym.sym == SDLK_ESCAPE){
-                juego_corriendo = FALSE;
+            switch (event.key.keysym.sym) {
+                case SDLK_UP:
+                    car.speed +=1;
+                    break;
+                case SDLK_DOWN:
+                    car.speed -=1;
+                    break;
+                case SDLK_ESCAPE:
+                    juego_corriendo = FALSE;
+                    break;
             }
         default:
             break;
     }
 }
 void actualiza(){
-    car.distance += 1;
+    int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - last_frame_time);
+
+    if(time_to_wait>0 && time_to_wait <= FRAME_TARGET_TIME) {
+        SDL_Delay(FRAME_TARGET_TIME);
+    }
+    float delta_time = (SDL_GetTicks() - last_frame_time)*car.speed/1000.0f;
+    car.distance += delta_time;
+    last_frame_time = SDL_GetTicks();
 }
 
 void render(){
