@@ -7,22 +7,25 @@ SDL_Renderer *renderer = nullptr;
 int juego_corriendo = FALSE;
 float ultimo_tiempo = 0.0f;
 float curvaturaActual = 0;
-int curvatura;
+float curvaturaPista = 0;
+float curvatura;
 int seccion = 0;
-int secciones[10][2] =  {{2000, 0},
-                              {1000, -1},
-                              {1000, -2},
-                              {3000, 0},
-                              {700, 1},
-                              {700, -1},
-                              {2000, 0},
-                              {1000, 1},
-                              {1000, 2},
-                              {4000, 0}};
+float secciones[10][2] =  {{1000.0f, 0.0f},
+                              {300.0f, -0.7f},
+                              {100.0f, 0.6f},
+                              {800.0f, 0.0f},
+                              {400.0f, 1.0f},
+                              {300.0f, -1.0f},
+                              {1200.0f, 0.0f},
+                              {600.0f, 1.0f},
+                              {300.0f, 2.0f},
+                              {2000.0f, 0.0f}};
 
 struct car{
     float distancia;
     float velocidad;
+    int posx;
+    float curvatura;
 } car;
 
 int initializa_ventana(){
@@ -70,10 +73,21 @@ void procesa_input(){
         case SDL_KEYDOWN:
             switch (event.key.keysym.sym) {
                 case SDLK_UP:
-                    car.velocidad+=5.0f;
-                    break;
+                    if(car.velocidad < 360){
+                        car.velocidad+=5.0f;
+                        break;
+                    }
+                    else{
+                        break;
+                    }
                 case SDLK_DOWN:
                     car.velocidad = abs(car.velocidad - 5.0f);
+                    break;
+                case SDLK_LEFT:
+                    car.curvatura -= 10.7f;
+                    break;
+                case SDLK_RIGHT:
+                    car.curvatura += 10.7f;
                     break;
                 case SDLK_ESCAPE:
                     juego_corriendo = FALSE;
@@ -82,7 +96,7 @@ void procesa_input(){
                     break;
             }
         default:
-            car.velocidad = abs(car.velocidad - 1.0f);
+            car.velocidad = abs(car.velocidad - 0.7f);
             break;
     }
 }
@@ -102,6 +116,8 @@ void actualiza(){
     ultimo_tiempo = SDL_GetTicks();
     float diffCurvas = (curvatura - curvaturaActual)*delta_time;
     curvaturaActual += diffCurvas;
+
+    curvaturaPista += (curvatura)* delta_time * car.velocidad;
 }
 
 void render(){
@@ -112,11 +128,7 @@ void render(){
         for(int x=0; x < WINDOW_WIDTH; x++){
             float perspectiva = (float)y/ (WINDOW_HEIGHT/2);
 
-
-
-
-
-            float puntoMedio = 0.5f + curvaturaActual * pow((1-perspectiva),2);
+            float puntoMedio = 0.5f + curvaturaActual * pow((1-perspectiva),3);
             float anchoCalle = 0.1f  + perspectiva * 0.8f;
             float anchoKerbs = anchoCalle * 0.15f;
 
@@ -153,9 +165,9 @@ void render(){
             }
         }
     }
-
+    car.posx = 350 + car.curvatura - curvaturaPista;
     SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
-    SDL_Rect sprite = {350, 500, 100, 50};
+    SDL_Rect sprite = {car.posx, 500, 80, 50};
     SDL_RenderFillRect(renderer, &sprite);
     SDL_RenderPresent(renderer);
 }
@@ -167,10 +179,9 @@ void destruye_ventana(){
 }
 
 int main() {
-
     juego_corriendo = initializa_ventana();
     setup();
-
+    
     while(juego_corriendo){
         procesa_input();
         actualiza();
