@@ -1,32 +1,43 @@
-#include <iostream>
+
 #include <SDL.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <netinet/in.h>
+
+
 #include "constants.h"
 
 SDL_Window *window = nullptr;
 SDL_Renderer *renderer = nullptr;
+int newtwork_socket;
 int juego_corriendo = FALSE;
 float ultimo_tiempo = 0.0f;
 float curvaturaActual = 0;
 float curvaturaPista = 0;
-float curvatura;
-int seccion = 0;
-float secciones[10][2] =  {{1000.0f, 0.0f},
-                              {300.0f, -0.7f},
-                              {100.0f, 0.6f},
-                              {800.0f, 0.0f},
-                              {400.0f, 1.0f},
-                              {300.0f, -1.0f},
-                              {1200.0f, 0.0f},
-                              {600.0f, 1.0f},
-                              {300.0f, 2.0f},
-                              {2000.0f, 0.0f}};
+float secciones[10][2] = {{1000.0f, 0.0f},
+                   {200.0f, 1.0f},
+                   {200.0f, -1.1f},
+                   {800.0f, 0.6f},
+                   {800.0f, 0.0f},
+                   {400.0f, 1.0f},
+                   {400.0f, 0.0f},
+                   {200.0f, -1.0f},
+                   {800.0f, 0.0f},
+                   {400.0f, -0.2f}};
 
-struct car{
+
+struct Car{
     float distancia;
     float velocidad;
     int posx;
     float curvatura;
 } car;
+
+struct SeccionPista{
+    int nseccion;
+    float curvatura;
+    float distancia;
+} pista;
 
 int initializa_ventana(){
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0){
@@ -35,7 +46,7 @@ int initializa_ventana(){
     };
 
     window = SDL_CreateWindow(
-            NULL,
+            nullptr,
             SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED,
             WINDOW_WIDTH,
@@ -56,10 +67,27 @@ int initializa_ventana(){
     return TRUE;
 }
 
+ int conxecion_socket(){
+    newtwork_socket = socket(AF_INET, SOCK_STREAM, 0);
+    struct sockaddr_in server_address;
+    server_address.sin_family = AF_INET;
+    server_address.sin_port = htons(8080);
+    server_address.sin_addr.s_addr = INADDR_ANY;
+
+    int connection_status = connect(newtwork_socket, (struct sockaddr *)&server_address, sizeof(server_address));
+    if(connection_status == -1){
+        printf("No se pudo conectar con el servidor.\n");
+        return FALSE;
+    }
+    return TRUE;
+}
+
 void setup(){
     car.distancia=0.0f;
     car.velocidad=0.0f;
-    curvatura = secciones[seccion][1];
+    pista.nseccion = 0;
+    pista.curvatura = secciones[pista.nseccion][1];
+    pista.distancia = secciones[pista.nseccion][0];
 }
 
 void procesa_input(){
@@ -101,23 +129,24 @@ void procesa_input(){
     }
 }
 void actualiza(){
-    float tiempo_de_espera = FRAME_TARGET_TIME - (SDL_GetTicks() - ultimo_tiempo);
+    float tiempo_de_espera = FRAME_TARGET_TIME - ((float)SDL_GetTicks() - ultimo_tiempo);
 
     if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
         SDL_Delay(FRAME_TARGET_TIME);
     }
-    float delta_time = (SDL_GetTicks() - ultimo_tiempo)/1000.0f;
+    float delta_time = ((float)SDL_GetTicks() - ultimo_tiempo)/1000.0f;
     car.distancia += delta_time * car.velocidad;
-    if(car.distancia >= secciones[seccion][0]){
+    if(car.distancia >= pista.distancia){
         car.distancia = 0;
-        seccion +=1;
-        curvatura = secciones[seccion][1];
+        pista.nseccion +=1;
+        pista.curvatura = secciones[pista.nseccion][1];
     }
-    ultimo_tiempo = SDL_GetTicks();
-    float diffCurvas = (curvatura - curvaturaActual)*delta_time;
+    ultimo_tiempo = (float)SDL_GetTicks();
+    float diffCurvas = (pista.curvatura - curvaturaActual) * delta_time;
     curvaturaActual += diffCurvas;
 
-    curvaturaPista += (curvatura)* delta_time * car.velocidad;
+    curvaturaPista += (pista.curvatura)* delta_time * car.velocidad;
+    car.posx = 350 + car.curvatura - curvaturaPista;
 }
 
 void render(){
@@ -126,7 +155,7 @@ void render(){
 
     for(int y=0; y < WINDOW_HEIGHT/2; y++){
         for(int x=0; x < WINDOW_WIDTH; x++){
-            float perspectiva = (float)y/ (WINDOW_HEIGHT/2);
+            float perspectiva = (float)y/ ((float)WINDOW_HEIGHT/2);
 
             float puntoMedio = 0.5f + curvaturaActual * pow((1-perspectiva),3);
             float anchoCalle = 0.1f  + perspectiva * 0.8f;
@@ -165,11 +194,16 @@ void render(){
             }
         }
     }
-    car.posx = 350 + car.curvatura - curvaturaPista;
     SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
     SDL_Rect sprite = {car.posx, 500, 80, 50};
     SDL_RenderFillRect(renderer, &sprite);
     SDL_RenderPresent(renderer);
+}
+
+void recibe_datos(){
+    char server_response[256];
+    recv(newtwork_socket, &server_response, sizeof(server_response), 0);
+    printf("%s\n", server_response);
 }
 
 void destruye_ventana(){
@@ -178,14 +212,17 @@ void destruye_ventana(){
     SDL_Quit();
 }
 
+
 int main() {
     juego_corriendo = initializa_ventana();
     setup();
+    conxecion_socket();
     
     while(juego_corriendo){
         procesa_input();
         actualiza();
         render();
+        recibe_datos();
     }
     destruye_ventana();
     return 0;
