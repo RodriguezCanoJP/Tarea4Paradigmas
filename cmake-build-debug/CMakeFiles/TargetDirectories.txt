@@ -1,3 +1,4 @@
 /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/CMakeFiles/PolePosition.dir
+/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/CMakeFiles/PolePositionServer.dir
 /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/CMakeFiles/edit_cache.dir
 /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/CMakeFiles/rebuild_cache.dir

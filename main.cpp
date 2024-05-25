@@ -1,10 +1,8 @@
-
 #include <SDL.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <netinet/in.h>
-
-
+#include <unistd.h>
 #include "constants.h"
 
 SDL_Window *window = nullptr;
@@ -25,7 +23,6 @@ float secciones[10][2] = {{1000.0f, 0.0f},
                    {800.0f, 0.0f},
                    {400.0f, -0.2f}};
 
-
 struct Car{
     float distancia;
     float velocidad;
@@ -43,7 +40,7 @@ int initializa_ventana(){
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0){
         fprintf(stderr, "Error al inicializar SDL.\n");
         return FALSE;
-    };
+    }
 
     window = SDL_CreateWindow(
             nullptr,
@@ -69,7 +66,7 @@ int initializa_ventana(){
 
  int conxecion_socket(){
     newtwork_socket = socket(AF_INET, SOCK_STREAM, 0);
-    struct sockaddr_in server_address;
+    struct sockaddr_in server_address{};
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(8080);
     server_address.sin_addr.s_addr = INADDR_ANY;
@@ -201,9 +198,15 @@ void render(){
 }
 
 void recibe_datos(){
-    char server_response[256];
+    char server_response[32];
     recv(newtwork_socket, &server_response, sizeof(server_response), 0);
     printf("%s\n", server_response);
+}
+
+void enviar_datos(){
+    char server_response[32];
+    sprintf(server_response, "%i %f", pista.nseccion, car.distancia);
+    send(newtwork_socket, &server_response, sizeof(server_response), 0);
 }
 
 void destruye_ventana(){
@@ -212,18 +215,18 @@ void destruye_ventana(){
     SDL_Quit();
 }
 
-
 int main() {
     juego_corriendo = initializa_ventana();
     setup();
     conxecion_socket();
-    
+    recibe_datos();
     while(juego_corriendo){
         procesa_input();
         actualiza();
         render();
-        recibe_datos();
+        enviar_datos();
     }
+    close(newtwork_socket);
     destruye_ventana();
     return 0;
 }

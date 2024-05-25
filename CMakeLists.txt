@@ -7,4 +7,5 @@ find_package(SDL2 REQUIRED)
 include_directories(/opt/homebrew/include/SDL2)
 
 add_executable(PolePosition main.cpp)
+add_executable(PolePositionServer servidor.c)
 target_link_libraries(PolePosition ${SDL2_LIBRARIES})

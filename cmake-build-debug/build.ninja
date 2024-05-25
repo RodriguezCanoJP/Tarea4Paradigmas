@@ -71,6 +71,38 @@ build PolePosition: CXX_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePos
   TARGET_FILE = PolePosition
   TARGET_PDB = PolePosition.dbg
 
+# =============================================================================
+# Object build statements for EXECUTABLE target PolePositionServer
+
+
+#############################################
+# Order-only phony target for PolePositionServer
+
+build cmake_object_order_depends_target_PolePositionServer: phony || CMakeFiles/PolePositionServer.dir
+
+build CMakeFiles/PolePositionServer.dir/servidor.c.o: C_COMPILER__PolePositionServer_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/servidor.c || cmake_object_order_depends_target_PolePositionServer
+  DEP_FILE = CMakeFiles/PolePositionServer.dir/servidor.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = CMakeFiles/PolePositionServer.dir
+  OBJECT_FILE_DIR = CMakeFiles/PolePositionServer.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target PolePositionServer
+
+
+#############################################
+# Link the executable PolePositionServer
+
+build PolePositionServer: C_EXECUTABLE_LINKER__PolePositionServer_Debug CMakeFiles/PolePositionServer.dir/servidor.c.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  OBJECT_DIR = CMakeFiles/PolePositionServer.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = PolePositionServer
+  TARGET_PDB = PolePositionServer.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -105,7 +137,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
 
-build all: phony PolePosition
+build all: phony PolePosition PolePositionServer
 
 # =============================================================================
 # Built-in targets
