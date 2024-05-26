@@ -7,14 +7,16 @@
 
 SDL_Window *window = nullptr;
 SDL_Renderer *renderer = nullptr;
+char server_response[32];
 int newtwork_socket;
 int juego_corriendo = FALSE;
+int num_oponentes = 1;
 float ultimo_tiempo = 0.0f;
 float curvaturaActual = 0;
 float curvaturaPista = 0;
 float secciones[10][2] = {{1000.0f, 0.0f},
-                   {200.0f, 1.0f},
-                   {200.0f, -1.1f},
+                   {200.0f, 0.3f},
+                   {200.0f, -0.7f},
                    {800.0f, 0.6f},
                    {800.0f, 0.0f},
                    {400.0f, 1.0f},
@@ -26,11 +28,18 @@ float secciones[10][2] = {{1000.0f, 0.0f},
 struct Car{
     float distancia;
     float velocidad;
+    float posicion;
     int posx;
     float curvatura;
 } car;
 
-struct SeccionPista{
+struct Opp{
+    float distancia;
+    float posicion;
+    int posx;
+};
+
+struct Pista{
     int nseccion;
     float curvatura;
     float distancia;
@@ -79,12 +88,29 @@ int initializa_ventana(){
     return TRUE;
 }
 
-void setup(){
+Car* setup(int ncars){
     car.distancia=0.0f;
     car.velocidad=0.0f;
     pista.nseccion = 0;
     pista.curvatura = secciones[pista.nseccion][1];
     pista.distancia = secciones[pista.nseccion][0];
+
+    Car *opponents[ncars];
+    for(int i = 0; i < ncars; i++){
+        opponents[i] = new Car;
+        if(car.posicion != 0){
+            opponents[i]->posicion = i;
+        }
+        opponents[i]->distancia = 0.0f;
+
+    }
+
+    return opponents[0];
+}
+
+void recibe_datos(){
+    recv(newtwork_socket, &server_response, sizeof(server_response), 0);
+    printf("%s\n", server_response);
 }
 
 void procesa_input(){
@@ -125,7 +151,7 @@ void procesa_input(){
             break;
     }
 }
-void actualiza(){
+void actualiza(Car* opps){
     float tiempo_de_espera = FRAME_TARGET_TIME - ((float)SDL_GetTicks() - ultimo_tiempo);
 
     if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
@@ -144,9 +170,19 @@ void actualiza(){
 
     curvaturaPista += (pista.curvatura)* delta_time * car.velocidad;
     car.posx = 350 + car.curvatura - curvaturaPista;
+
+    recibe_datos();
+
+    float distancia_temp = atof(server_response + 1);
+
+    for(int i = 0; i < num_oponentes; i++){
+        opps[i].distancia = distancia_temp + 150;
+    }
+
+
 }
 
-void render(){
+void render(Car *opps){
     SDL_SetRenderDrawColor(renderer, 80, 70, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -194,18 +230,22 @@ void render(){
     SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
     SDL_Rect sprite = {car.posx, 500, 80, 50};
     SDL_RenderFillRect(renderer, &sprite);
+
+
+    for (int i = 0; i < num_oponentes; ++i) {
+        SDL_SetRenderDrawColor(renderer, 0, 0, 100, 100);
+        int diffDistance = car.distancia - (int)opps[i].distancia;
+        SDL_Rect opp_sprite = {car.posx,  500 + diffDistance, 80, 50};
+        SDL_RenderFillRect(renderer, &opp_sprite);
+    }
     SDL_RenderPresent(renderer);
 }
 
-void recibe_datos(){
-    char server_response[32];
-    recv(newtwork_socket, &server_response, sizeof(server_response), 0);
-    printf("%s\n", server_response);
-}
+
 
 void enviar_datos(){
     char server_response[32];
-    sprintf(server_response, "%i %f", pista.nseccion, car.distancia);
+    sprintf(server_response, "%i%f", pista.nseccion, car.distancia);
     send(newtwork_socket, &server_response, sizeof(server_response), 0);
 }
 
@@ -217,13 +257,13 @@ void destruye_ventana(){
 
 int main() {
     juego_corriendo = initializa_ventana();
-    setup();
+    Car *oponentes = setup(num_oponentes);
     conxecion_socket();
-    recibe_datos();
+
     while(juego_corriendo){
         procesa_input();
-        actualiza();
-        render();
+        actualiza(oponentes);
+        render(oponentes);
         enviar_datos();
     }
     close(newtwork_socket);
