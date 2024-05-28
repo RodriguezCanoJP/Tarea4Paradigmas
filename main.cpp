@@ -73,7 +73,7 @@ int initializa_ventana(){
     return TRUE;
 }
 
- int conxecion_socket(){
+ int conexion_socket(){
     newtwork_socket = socket(AF_INET, SOCK_STREAM, 0);
     struct sockaddr_in server_address{};
     server_address.sin_family = AF_INET;
@@ -88,16 +88,16 @@ int initializa_ventana(){
     return TRUE;
 }
 
-Car* setup(int ncars){
+Opp* setup(int ncars){
     car.distancia=0.0f;
     car.velocidad=0.0f;
     pista.nseccion = 0;
     pista.curvatura = secciones[pista.nseccion][1];
     pista.distancia = secciones[pista.nseccion][0];
 
-    Car *opponents[ncars];
+    Opp *opponents[ncars];
     for(int i = 0; i < ncars; i++){
-        opponents[i] = new Car;
+        opponents[i] = new Opp;
         if(car.posicion != 0){
             opponents[i]->posicion = i;
         }
@@ -151,7 +151,7 @@ void procesa_input(){
             break;
     }
 }
-void actualiza(Car* opps){
+void actualiza(Opp* opps){
     float tiempo_de_espera = FRAME_TARGET_TIME - ((float)SDL_GetTicks() - ultimo_tiempo);
 
     if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
@@ -171,40 +171,41 @@ void actualiza(Car* opps){
     curvaturaPista += (pista.curvatura)* delta_time * car.velocidad;
     car.posx = 350 + car.curvatura - curvaturaPista;
 
+    if(car.posx < 0 || car.posx >= WINDOW_WIDTH - CAR_WIDTH){
+        car.velocidad = 5.0f;
+    }
+
     recibe_datos();
 
     float distancia_temp = atof(server_response + 1);
 
     for(int i = 0; i < num_oponentes; i++){
-        opps[i].distancia = distancia_temp + 150;
+        opps[i].distancia = distancia_temp + 100;
     }
-
-
 }
 
-void render(Car *opps){
+void render(Opp *opps){
     SDL_SetRenderDrawColor(renderer, 80, 70, 255, 255);
     SDL_RenderClear(renderer);
 
     for(int y=0; y < WINDOW_HEIGHT/2; y++){
+        float perspectiva = (float)y/ ((float)WINDOW_HEIGHT/2);
+        float puntoMedio = 0.5f + curvaturaActual * pow((1-perspectiva),3);
+        float anchoCalle = 0.1f  + perspectiva * 0.8f;
+        float anchoKerbs = anchoCalle * 0.15f;
+
+        anchoCalle *= 0.5;
+
+        int PastoIzquierda = (puntoMedio - anchoCalle - anchoKerbs) * WINDOW_WIDTH;
+        int PastoDerecha = (puntoMedio + anchoCalle + anchoKerbs) * WINDOW_WIDTH;
+        int KerbsIzquierda = (puntoMedio - anchoCalle) * WINDOW_WIDTH;
+        int KerbsDerecha = (puntoMedio + anchoCalle ) * WINDOW_WIDTH;
+
+        int row = WINDOW_HEIGHT/2 + y;
+        int color = sinf(20.0f * powf(1-perspectiva, 3) + car.distancia * 0.1f) > 0.0f? 30:80;
+        int kerbsColor = sinf(30.0f * powf(1-perspectiva, 3) + car.distancia * 0.3f) > 0.0f? 0:255;
+
         for(int x=0; x < WINDOW_WIDTH; x++){
-            float perspectiva = (float)y/ ((float)WINDOW_HEIGHT/2);
-
-            float puntoMedio = 0.5f + curvaturaActual * pow((1-perspectiva),3);
-            float anchoCalle = 0.1f  + perspectiva * 0.8f;
-            float anchoKerbs = anchoCalle * 0.15f;
-
-            anchoCalle *= 0.5;
-
-            int PastoIzquierda = (puntoMedio - anchoCalle - anchoKerbs) * WINDOW_WIDTH;
-            int PastoDerecha = (puntoMedio + anchoCalle + anchoKerbs) * WINDOW_WIDTH;
-            int KerbsIzquierda = (puntoMedio - anchoCalle) * WINDOW_WIDTH;
-            int KerbsDerecha = (puntoMedio + anchoCalle ) * WINDOW_WIDTH;
-
-            int row = WINDOW_HEIGHT/2 + y;
-            int color = sinf(20.0f * powf(1-perspectiva, 3) + car.distancia * 0.1f) > 0.0f? 30:80;
-            int kerbsColor = sinf(30.0f * powf(1-perspectiva, 3) + car.distancia * 0.3f) > 0.0f? 0:255;
-
             if(x >=0 && x < PastoIzquierda){
                 SDL_SetRenderDrawColor(renderer, color, 150, color, 56);
                 SDL_RenderDrawPoint(renderer, x, row);
@@ -227,24 +228,29 @@ void render(Car *opps){
             }
         }
     }
-    SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
-    SDL_Rect sprite = {car.posx, 500, 80, 50};
-    SDL_RenderFillRect(renderer, &sprite);
-
-
     for (int i = 0; i < num_oponentes; ++i) {
-        SDL_SetRenderDrawColor(renderer, 0, 0, 100, 100);
-        int diffDistance = car.distancia - (int)opps[i].distancia;
-        SDL_Rect opp_sprite = {car.posx,  500 + diffDistance, 80, 50};
-        SDL_RenderFillRect(renderer, &opp_sprite);
+        int diffDistance = (int) opps[i].distancia - car.distancia;
+        if (diffDistance < WINDOW_HEIGHT/2 && diffDistance > 0) {
+            int alpha = (2 * 80.0 / WINDOW_HEIGHT) * diffDistance;
+            //opps[i].posx = car.posx + alpha;
+            SDL_SetRenderDrawColor(renderer, 0, 0, 100, 100);
+            SDL_Rect opp_sprite = {car.posx + alpha,
+                                   CAR_Y_POS - diffDistance,
+                                   CAR_WIDTH - alpha,
+                                   CAR_HEIGHT - alpha};
+            SDL_RenderFillRect(renderer, &opp_sprite);
+        }
     }
+
+    SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
+    SDL_Rect sprite = {car.posx, CAR_Y_POS, CAR_WIDTH, CAR_HEIGHT};
+    SDL_RenderFillRect(renderer, &sprite);
     SDL_RenderPresent(renderer);
 }
 
 
 
 void enviar_datos(){
-    char server_response[32];
     sprintf(server_response, "%i%f", pista.nseccion, car.distancia);
     send(newtwork_socket, &server_response, sizeof(server_response), 0);
 }
@@ -257,8 +263,8 @@ void destruye_ventana(){
 
 int main() {
     juego_corriendo = initializa_ventana();
-    Car *oponentes = setup(num_oponentes);
-    conxecion_socket();
+    Opp *oponentes = setup(num_oponentes);
+    conexion_socket();
 
     while(juego_corriendo){
         procesa_input();
