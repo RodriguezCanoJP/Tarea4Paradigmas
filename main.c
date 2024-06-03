@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include "constants.h"
 
-SDL_Window *window = nullptr;
-SDL_Renderer *renderer = nullptr;
+SDL_Window *window = NULL;
+SDL_Renderer *renderer = NULL;
 char server_response[32];
 int newtwork_socket;
 int juego_corriendo = FALSE;
@@ -33,12 +33,6 @@ struct Car{
     float curvatura;
 } car;
 
-struct Opp{
-    float distancia;
-    float posicion;
-    int posx;
-};
-
 struct Pista{
     int nseccion;
     float curvatura;
@@ -52,7 +46,7 @@ int initializa_ventana(){
     }
 
     window = SDL_CreateWindow(
-            nullptr,
+            NULL,
             SDL_WINDOWPOS_CENTERED,
             SDL_WINDOWPOS_CENTERED,
             WINDOW_WIDTH,
@@ -75,7 +69,7 @@ int initializa_ventana(){
 
  int conexion_socket(){
     newtwork_socket = socket(AF_INET, SOCK_STREAM, 0);
-    struct sockaddr_in server_address{};
+    struct sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_port = htons(8080);
     server_address.sin_addr.s_addr = INADDR_ANY;
@@ -88,24 +82,12 @@ int initializa_ventana(){
     return TRUE;
 }
 
-Opp* setup(int ncars){
+void setup(){
     car.distancia=0.0f;
     car.velocidad=0.0f;
     pista.nseccion = 0;
     pista.curvatura = secciones[pista.nseccion][1];
     pista.distancia = secciones[pista.nseccion][0];
-
-    Opp *opponents[ncars];
-    for(int i = 0; i < ncars; i++){
-        opponents[i] = new Opp;
-        if(car.posicion != 0){
-            opponents[i]->posicion = i;
-        }
-        opponents[i]->distancia = 0.0f;
-
-    }
-
-    return opponents[0];
 }
 
 void recibe_datos(){
@@ -151,7 +133,7 @@ void procesa_input(){
             break;
     }
 }
-void actualiza(Opp* opps){
+void actualiza(){
     float tiempo_de_espera = FRAME_TARGET_TIME - ((float)SDL_GetTicks() - ultimo_tiempo);
 
     if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
@@ -176,15 +158,9 @@ void actualiza(Opp* opps){
     }
 
     recibe_datos();
-
-    float distancia_temp = atof(server_response + 1);
-
-    for(int i = 0; i < num_oponentes; i++){
-        opps[i].distancia = distancia_temp + 100;
-    }
 }
 
-void render(Opp *opps){
+void render(){
     SDL_SetRenderDrawColor(renderer, 80, 70, 255, 255);
     SDL_RenderClear(renderer);
 
@@ -228,27 +204,12 @@ void render(Opp *opps){
             }
         }
     }
-    for (int i = 0; i < num_oponentes; ++i) {
-        int diffDistance = (int) opps[i].distancia - car.distancia;
-        if (diffDistance < WINDOW_HEIGHT/2 && diffDistance > 0) {
-            int alpha = (2 * 80.0 / WINDOW_HEIGHT) * diffDistance;
-            //opps[i].posx = car.posx + alpha;
-            SDL_SetRenderDrawColor(renderer, 0, 0, 100, 100);
-            SDL_Rect opp_sprite = {car.posx + alpha,
-                                   CAR_Y_POS - diffDistance,
-                                   CAR_WIDTH - alpha,
-                                   CAR_HEIGHT - alpha};
-            SDL_RenderFillRect(renderer, &opp_sprite);
-        }
-    }
 
     SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
     SDL_Rect sprite = {car.posx, CAR_Y_POS, CAR_WIDTH, CAR_HEIGHT};
     SDL_RenderFillRect(renderer, &sprite);
     SDL_RenderPresent(renderer);
 }
-
-
 
 void enviar_datos(){
     sprintf(server_response, "%i%f", pista.nseccion, car.distancia);
@@ -263,13 +224,13 @@ void destruye_ventana(){
 
 int main() {
     juego_corriendo = initializa_ventana();
-    Opp *oponentes = setup(num_oponentes);
+    setup();
     conexion_socket();
 
     while(juego_corriendo){
         procesa_input();
-        actualiza(oponentes);
-        render(oponentes);
+        actualiza();
+        render();
         enviar_datos();
     }
     close(newtwork_socket);

@@ -46,9 +46,9 @@ cmake_ninja_workdir = /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake
 
 build cmake_object_order_depends_target_PolePosition: phony || CMakeFiles/PolePosition.dir
 
-build CMakeFiles/PolePosition.dir/main.cpp.o: CXX_COMPILER__PolePosition_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/main.cpp || cmake_object_order_depends_target_PolePosition
-  DEP_FILE = CMakeFiles/PolePosition.dir/main.cpp.o.d
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -std=gnu++17
+build CMakeFiles/PolePosition.dir/main.c.o: C_COMPILER__PolePosition_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/main.c || cmake_object_order_depends_target_PolePosition
+  DEP_FILE = CMakeFiles/PolePosition.dir/main.c.o.d
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
   INCLUDES = -I/opt/homebrew/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = CMakeFiles/PolePosition.dir
   OBJECT_FILE_DIR = CMakeFiles/PolePosition.dir
@@ -61,7 +61,7 @@ build CMakeFiles/PolePosition.dir/main.cpp.o: CXX_COMPILER__PolePosition_Debug /
 #############################################
 # Link the executable PolePosition
 
-build PolePosition: CXX_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePosition.dir/main.cpp.o | /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib
+build PolePosition: C_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePosition.dir/main.c.o | /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
   LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.30.3/lib  /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib
   LINK_PATH = -L/opt/homebrew/Cellar/sdl2/2.30.3/lib
