@@ -2,19 +2,61 @@ package poleposition;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import org.json.*;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class server {
     private static server serverInstace;
     private static ArrayList<cliente> clientes;
+    private static Pista pista;
 
     private server(){
-        this.clientes = new ArrayList<cliente>();
+        //se inicializa clientes
+        server.clientes = new ArrayList<cliente>();
+
+        //se lee valores de pista del json
+        try {
+            Path pistaPath = Paths.get("src/main/java/poleposition/resources/pista.json");
+            String pistaString = pistaPath.toAbsolutePath().toString();
+            File pistaFile = new File(pistaString);
+            Scanner pistaScanner = new Scanner(pistaFile);
+            String data = "";
+            while (pistaScanner.hasNextLine()) {
+                data += pistaScanner.nextLine();
+            }
+            pistaScanner.close();
+            System.out.println(data);
+
+            //se crea objeto json
+            JSONObject pistaJson = new JSONObject(data);
+
+            //se inicia pista y se guardan los valores del json
+            server.pista = new Pista(pistaJson.getInt("secciones"));
+            for (Integer i = 0; i < server.pista.getNumSecciones(); i++) {
+                String key = Integer.toString(i);
+                JSONArray valores = pistaJson.getJSONArray(key);
+                System.out.println(valores.toString());
+                pista.addLargo(((Float)valores.getFloat(0)), i);
+                pista.addCurva(((Float)valores.getFloat(1)), i);
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
+    /**
+     * 
+     * @return instancia del server
+     */
     public static server getServer(){
         if(server.serverInstace == null){
             server.serverInstace = new server();
@@ -24,6 +66,10 @@ public class server {
         }
     }
 
+    /**
+     * 
+     * @return boolean de si todos los clientes del server estan activos
+     */
     public static Boolean allClientesActive(){
         Boolean allActive = true;
         for (cliente cliente : clientes) {
