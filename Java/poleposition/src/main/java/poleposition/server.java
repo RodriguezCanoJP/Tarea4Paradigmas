@@ -80,7 +80,7 @@ public class server {
         return allActive;
     }
 
-    public static void serverRun(){
+    public void serverRun(){
         try {
             Boolean close = false;
             while(close == false){ 
@@ -92,7 +92,12 @@ public class server {
                     ServerSocket newSS = new ServerSocket(0);
                     StringBuilder port = new StringBuilder();
                     port.append(String.valueOf(newSS.getLocalPort()));
-                    System.out.println("New socket at" + port.toString());
+                    System.out.println();
+                    System.out.println(
+                        "New socket at "
+                        + InetAddress.getLocalHost() + ":"
+                        + port.toString()
+                    );
 
                     //guarde el valor del port y el cliente en lista
                     cliente newJugador = new cliente(newSS, cliente.getNumClientes());
