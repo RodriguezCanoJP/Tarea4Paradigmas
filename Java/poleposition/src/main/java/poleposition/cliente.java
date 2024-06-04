@@ -3,27 +3,27 @@ package poleposition;
 import java.net.ServerSocket;
 
 public class cliente {
-    private static Integer num_clientes = 0;
+    private static Integer numClientes = 0;
     
     public static void addCliente(){ 
-        cliente.num_clientes++;
+        cliente.numClientes++;
     }
 
     public static void rmvCliente(){
-        cliente.num_clientes--;
+        cliente.numClientes--;
     }
 
     public static int getNumClientes(){
-        return cliente.num_clientes;
+        return cliente.numClientes;
     }
 
     protected ServerSocket socket;
-    protected Integer num_cliente;
+    protected Integer numCliente;
     protected Boolean isActive;
 
-    public cliente(ServerSocket socket, int num_cliente){
+    public cliente(ServerSocket socket, int numCliente){
         this.socket = socket;
-        this.num_cliente = num_cliente;
+        this.numCliente = numCliente;
         this.isActive = false;
     }
 
