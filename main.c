@@ -8,6 +8,8 @@
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
+SDL_Texture *spriteTexture = NULL;
+SDL_Rect spriteRect = {0, 0, CAR_WIDTH, CAR_HEIGHT}; // SPRITE_WIDTH y SPRITE_HEIGHT son las dimensiones del sprite
 char server_response[32];
 int newtwork_socket;
 int juego_corriendo = FALSE;
@@ -64,6 +66,20 @@ int initializa_ventana(){
         fprintf(stderr, "Error al inicializar el renderer.\n");
         return FALSE;
     }
+
+    SDL_Surface *surface = SDL_LoadBMP("Resources/PolePositionCar.bmp");
+
+    if (!surface) {
+        fprintf(stderr, "Error al cargar la imagen del sprite. SDL_Error: %s\n", SDL_GetError());
+    }
+
+    spriteTexture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    SDL_FreeSurface(surface);
+    if (!spriteTexture) {
+        fprintf(stderr, "Error al crear la textura del sprite. SDL_Error: %s\n", SDL_GetError());
+    }
+
     return TRUE;
 }
 
@@ -210,9 +226,10 @@ void render(){
         }
     }
 
-    SDL_SetRenderDrawColor(renderer, 200, 20, 20, 100);
-    SDL_Rect sprite = {car.posx, CAR_Y_POS, CAR_WIDTH, CAR_HEIGHT};
-    SDL_RenderFillRect(renderer, &sprite);
+    spriteRect.x = car.posx;
+    spriteRect.y = CAR_Y_POS;
+    SDL_RenderCopy(renderer, spriteTexture, NULL, &spriteRect);
+    SDL_RenderPresent(renderer);
     SDL_RenderPresent(renderer);
 }
 

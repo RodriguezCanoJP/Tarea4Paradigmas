@@ -49,9 +49,11 @@ build cmake_object_order_depends_target_PolePosition: phony || cmake_object_orde
 build CMakeFiles/PolePosition.dir/main.c.o: C_COMPILER__PolePosition_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/main.c || cmake_object_order_depends_target_PolePosition
   DEP_FILE = CMakeFiles/PolePosition.dir/main.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2 -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON -isystem /opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON -isystem /opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = CMakeFiles/PolePosition.dir
   OBJECT_FILE_DIR = CMakeFiles/PolePosition.dir
+  TARGET_COMPILE_PDB = CMakeFiles/PolePosition.dir/
+  TARGET_PDB = PolePosition.pdb
 
 
 # =============================================================================
@@ -68,8 +70,9 @@ build PolePosition: C_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePosit
   OBJECT_DIR = CMakeFiles/PolePosition.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/PolePosition.dir/
   TARGET_FILE = PolePosition
-  TARGET_PDB = PolePosition.dbg
+  TARGET_PDB = PolePosition.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target PolePositionServer
@@ -83,9 +86,11 @@ build cmake_object_order_depends_target_PolePositionServer: phony || CMakeFiles/
 build CMakeFiles/PolePositionServer.dir/servidor.c.o: C_COMPILER__PolePositionServer_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/servidor.c || cmake_object_order_depends_target_PolePositionServer
   DEP_FILE = CMakeFiles/PolePositionServer.dir/servidor.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2 -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2 -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON
   OBJECT_DIR = CMakeFiles/PolePositionServer.dir
   OBJECT_FILE_DIR = CMakeFiles/PolePositionServer.dir
+  TARGET_COMPILE_PDB = CMakeFiles/PolePositionServer.dir/
+  TARGET_PDB = PolePositionServer.pdb
 
 
 # =============================================================================
@@ -100,8 +105,9 @@ build PolePositionServer: C_EXECUTABLE_LINKER__PolePositionServer_Debug CMakeFil
   OBJECT_DIR = CMakeFiles/PolePositionServer.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/PolePositionServer.dir/
   TARGET_FILE = PolePositionServer
-  TARGET_PDB = PolePositionServer.dbg
+  TARGET_PDB = PolePositionServer.pdb
 
 
 #############################################
@@ -186,9 +192,11 @@ build cJSON/CMakeFiles/cjson.dir/cJSON.c.o: C_COMPILER__cjson_Debug /Users/juanp
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES -Dcjson_EXPORTS
   DEP_FILE = cJSON/CMakeFiles/cjson.dir/cJSON.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -fPIC
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/CMakeFiles/cjson.dir
   OBJECT_FILE_DIR = cJSON/CMakeFiles/cjson.dir
+  TARGET_COMPILE_PDB = cJSON/CMakeFiles/cjson.dir/
+  TARGET_PDB = cJSON/libcjson.pdb
 
 
 # =============================================================================
@@ -209,8 +217,9 @@ build cJSON/libcjson.1.7.18.dylib: C_SHARED_LIBRARY_LINKER__cjson_Debug cJSON/CM
   PRE_LINK = :
   SONAME = libcjson.1.dylib
   SONAME_FLAG = -install_name
+  TARGET_COMPILE_PDB = cJSON/CMakeFiles/cjson.dir/
   TARGET_FILE = cJSON/libcjson.1.7.18.dylib
-  TARGET_PDB = cjson.dylib.dbg
+  TARGET_PDB = cJSON/libcjson.pdb
 
 
 #############################################
@@ -232,9 +241,11 @@ build cJSON/CMakeFiles/cJSON_test.dir/test.c.o: C_COMPILER__cJSON_test_Debug /Us
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/CMakeFiles/cJSON_test.dir/test.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/CMakeFiles/cJSON_test.dir
   OBJECT_FILE_DIR = cJSON/CMakeFiles/cJSON_test.dir
+  TARGET_COMPILE_PDB = cJSON/CMakeFiles/cJSON_test.dir/
+  TARGET_PDB = cJSON/cJSON_test.pdb
 
 
 # =============================================================================
@@ -250,8 +261,9 @@ build cJSON/cJSON_test: C_EXECUTABLE_LINKER__cJSON_test_Debug cJSON/CMakeFiles/c
   OBJECT_DIR = cJSON/CMakeFiles/cJSON_test.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/CMakeFiles/cJSON_test.dir/
   TARGET_FILE = cJSON/cJSON_test
-  TARGET_PDB = cJSON_test.dbg
+  TARGET_PDB = cJSON/cJSON_test.pdb
 
 
 #############################################
@@ -362,9 +374,11 @@ build cJSON/tests/CMakeFiles/unity.dir/unity/src/unity.c.o: C_COMPILER__unity_De
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/unity.dir/unity/src/unity.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -fvisibility=default
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/unity.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/unity.dir/unity/src
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/unity.dir/unity.pdb
+  TARGET_PDB = cJSON/tests/libunity.pdb
 
 
 # =============================================================================
@@ -380,8 +394,9 @@ build cJSON/tests/libunity.a: C_STATIC_LIBRARY_LINKER__unity_Debug cJSON/tests/C
   OBJECT_DIR = cJSON/tests/CMakeFiles/unity.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/unity.dir/unity.pdb
   TARGET_FILE = cJSON/tests/libunity.a
-  TARGET_PDB = unity.a.dbg
+  TARGET_PDB = cJSON/tests/libunity.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_examples
@@ -396,9 +411,11 @@ build cJSON/tests/CMakeFiles/parse_examples.dir/parse_examples.c.o: C_COMPILER__
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_examples.dir/parse_examples.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_examples.dir/
+  TARGET_PDB = cJSON/tests/parse_examples.pdb
 
 
 # =============================================================================
@@ -414,8 +431,9 @@ build cJSON/tests/parse_examples: C_EXECUTABLE_LINKER__parse_examples_Debug cJSO
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_examples.dir/
   TARGET_FILE = cJSON/tests/parse_examples
-  TARGET_PDB = parse_examples.dbg
+  TARGET_PDB = cJSON/tests/parse_examples.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_number
@@ -430,9 +448,11 @@ build cJSON/tests/CMakeFiles/parse_number.dir/parse_number.c.o: C_COMPILER__pars
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_number.dir/parse_number.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_number.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_number.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_number.dir/
+  TARGET_PDB = cJSON/tests/parse_number.pdb
 
 
 # =============================================================================
@@ -448,8 +468,9 @@ build cJSON/tests/parse_number: C_EXECUTABLE_LINKER__parse_number_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_number.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_number.dir/
   TARGET_FILE = cJSON/tests/parse_number
-  TARGET_PDB = parse_number.dbg
+  TARGET_PDB = cJSON/tests/parse_number.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_hex4
@@ -464,9 +485,11 @@ build cJSON/tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o: C_COMPILER__parse_he
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_hex4.dir/
+  TARGET_PDB = cJSON/tests/parse_hex4.pdb
 
 
 # =============================================================================
@@ -482,8 +505,9 @@ build cJSON/tests/parse_hex4: C_EXECUTABLE_LINKER__parse_hex4_Debug cJSON/tests/
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_hex4.dir/
   TARGET_FILE = cJSON/tests/parse_hex4
-  TARGET_PDB = parse_hex4.dbg
+  TARGET_PDB = cJSON/tests/parse_hex4.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_string
@@ -498,9 +522,11 @@ build cJSON/tests/CMakeFiles/parse_string.dir/parse_string.c.o: C_COMPILER__pars
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_string.dir/parse_string.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_string.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_string.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_string.dir/
+  TARGET_PDB = cJSON/tests/parse_string.pdb
 
 
 # =============================================================================
@@ -516,8 +542,9 @@ build cJSON/tests/parse_string: C_EXECUTABLE_LINKER__parse_string_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_string.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_string.dir/
   TARGET_FILE = cJSON/tests/parse_string
-  TARGET_PDB = parse_string.dbg
+  TARGET_PDB = cJSON/tests/parse_string.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_array
@@ -532,9 +559,11 @@ build cJSON/tests/CMakeFiles/parse_array.dir/parse_array.c.o: C_COMPILER__parse_
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_array.dir/parse_array.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_array.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_array.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_array.dir/
+  TARGET_PDB = cJSON/tests/parse_array.pdb
 
 
 # =============================================================================
@@ -550,8 +579,9 @@ build cJSON/tests/parse_array: C_EXECUTABLE_LINKER__parse_array_Debug cJSON/test
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_array.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_array.dir/
   TARGET_FILE = cJSON/tests/parse_array
-  TARGET_PDB = parse_array.dbg
+  TARGET_PDB = cJSON/tests/parse_array.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_object
@@ -566,9 +596,11 @@ build cJSON/tests/CMakeFiles/parse_object.dir/parse_object.c.o: C_COMPILER__pars
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_object.dir/parse_object.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_object.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_object.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_object.dir/
+  TARGET_PDB = cJSON/tests/parse_object.pdb
 
 
 # =============================================================================
@@ -584,8 +616,9 @@ build cJSON/tests/parse_object: C_EXECUTABLE_LINKER__parse_object_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_object.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_object.dir/
   TARGET_FILE = cJSON/tests/parse_object
-  TARGET_PDB = parse_object.dbg
+  TARGET_PDB = cJSON/tests/parse_object.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_value
@@ -600,9 +633,11 @@ build cJSON/tests/CMakeFiles/parse_value.dir/parse_value.c.o: C_COMPILER__parse_
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_value.dir/parse_value.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_value.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_value.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_value.dir/
+  TARGET_PDB = cJSON/tests/parse_value.pdb
 
 
 # =============================================================================
@@ -618,8 +653,9 @@ build cJSON/tests/parse_value: C_EXECUTABLE_LINKER__parse_value_Debug cJSON/test
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_value.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_value.dir/
   TARGET_FILE = cJSON/tests/parse_value
-  TARGET_PDB = parse_value.dbg
+  TARGET_PDB = cJSON/tests/parse_value.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target print_string
@@ -634,9 +670,11 @@ build cJSON/tests/CMakeFiles/print_string.dir/print_string.c.o: C_COMPILER__prin
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/print_string.dir/print_string.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_string.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_string.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_string.dir/
+  TARGET_PDB = cJSON/tests/print_string.pdb
 
 
 # =============================================================================
@@ -652,8 +690,9 @@ build cJSON/tests/print_string: C_EXECUTABLE_LINKER__print_string_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_string.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_string.dir/
   TARGET_FILE = cJSON/tests/print_string
-  TARGET_PDB = print_string.dbg
+  TARGET_PDB = cJSON/tests/print_string.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target print_number
@@ -668,9 +707,11 @@ build cJSON/tests/CMakeFiles/print_number.dir/print_number.c.o: C_COMPILER__prin
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/print_number.dir/print_number.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_number.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_number.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_number.dir/
+  TARGET_PDB = cJSON/tests/print_number.pdb
 
 
 # =============================================================================
@@ -686,8 +727,9 @@ build cJSON/tests/print_number: C_EXECUTABLE_LINKER__print_number_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_number.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_number.dir/
   TARGET_FILE = cJSON/tests/print_number
-  TARGET_PDB = print_number.dbg
+  TARGET_PDB = cJSON/tests/print_number.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target print_array
@@ -702,9 +744,11 @@ build cJSON/tests/CMakeFiles/print_array.dir/print_array.c.o: C_COMPILER__print_
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/print_array.dir/print_array.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_array.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_array.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_array.dir/
+  TARGET_PDB = cJSON/tests/print_array.pdb
 
 
 # =============================================================================
@@ -720,8 +764,9 @@ build cJSON/tests/print_array: C_EXECUTABLE_LINKER__print_array_Debug cJSON/test
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_array.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_array.dir/
   TARGET_FILE = cJSON/tests/print_array
-  TARGET_PDB = print_array.dbg
+  TARGET_PDB = cJSON/tests/print_array.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target print_object
@@ -736,9 +781,11 @@ build cJSON/tests/CMakeFiles/print_object.dir/print_object.c.o: C_COMPILER__prin
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/print_object.dir/print_object.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_object.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_object.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_object.dir/
+  TARGET_PDB = cJSON/tests/print_object.pdb
 
 
 # =============================================================================
@@ -754,8 +801,9 @@ build cJSON/tests/print_object: C_EXECUTABLE_LINKER__print_object_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_object.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_object.dir/
   TARGET_FILE = cJSON/tests/print_object
-  TARGET_PDB = print_object.dbg
+  TARGET_PDB = cJSON/tests/print_object.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target print_value
@@ -770,9 +818,11 @@ build cJSON/tests/CMakeFiles/print_value.dir/print_value.c.o: C_COMPILER__print_
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/print_value.dir/print_value.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_value.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_value.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_value.dir/
+  TARGET_PDB = cJSON/tests/print_value.pdb
 
 
 # =============================================================================
@@ -788,8 +838,9 @@ build cJSON/tests/print_value: C_EXECUTABLE_LINKER__print_value_Debug cJSON/test
   OBJECT_DIR = cJSON/tests/CMakeFiles/print_value.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/print_value.dir/
   TARGET_FILE = cJSON/tests/print_value
-  TARGET_PDB = print_value.dbg
+  TARGET_PDB = cJSON/tests/print_value.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target misc_tests
@@ -804,9 +855,11 @@ build cJSON/tests/CMakeFiles/misc_tests.dir/misc_tests.c.o: C_COMPILER__misc_tes
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/misc_tests.dir/misc_tests.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/misc_tests.dir/
+  TARGET_PDB = cJSON/tests/misc_tests.pdb
 
 
 # =============================================================================
@@ -822,8 +875,9 @@ build cJSON/tests/misc_tests: C_EXECUTABLE_LINKER__misc_tests_Debug cJSON/tests/
   OBJECT_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/misc_tests.dir/
   TARGET_FILE = cJSON/tests/misc_tests
-  TARGET_PDB = misc_tests.dbg
+  TARGET_PDB = cJSON/tests/misc_tests.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target parse_with_opts
@@ -838,9 +892,11 @@ build cJSON/tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o: C_COMPILER
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_with_opts.dir/
+  TARGET_PDB = cJSON/tests/parse_with_opts.pdb
 
 
 # =============================================================================
@@ -856,8 +912,9 @@ build cJSON/tests/parse_with_opts: C_EXECUTABLE_LINKER__parse_with_opts_Debug cJ
   OBJECT_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/parse_with_opts.dir/
   TARGET_FILE = cJSON/tests/parse_with_opts
-  TARGET_PDB = parse_with_opts.dbg
+  TARGET_PDB = cJSON/tests/parse_with_opts.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target compare_tests
@@ -872,9 +929,11 @@ build cJSON/tests/CMakeFiles/compare_tests.dir/compare_tests.c.o: C_COMPILER__co
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/compare_tests.dir/compare_tests.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/compare_tests.dir/
+  TARGET_PDB = cJSON/tests/compare_tests.pdb
 
 
 # =============================================================================
@@ -890,8 +949,9 @@ build cJSON/tests/compare_tests: C_EXECUTABLE_LINKER__compare_tests_Debug cJSON/
   OBJECT_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/compare_tests.dir/
   TARGET_FILE = cJSON/tests/compare_tests
-  TARGET_PDB = compare_tests.dbg
+  TARGET_PDB = cJSON/tests/compare_tests.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target cjson_add
@@ -906,9 +966,11 @@ build cJSON/tests/CMakeFiles/cjson_add.dir/cjson_add.c.o: C_COMPILER__cjson_add_
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/cjson_add.dir/cjson_add.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/cjson_add.dir/
+  TARGET_PDB = cJSON/tests/cjson_add.pdb
 
 
 # =============================================================================
@@ -924,8 +986,9 @@ build cJSON/tests/cjson_add: C_EXECUTABLE_LINKER__cjson_add_Debug cJSON/tests/CM
   OBJECT_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/cjson_add.dir/
   TARGET_FILE = cJSON/tests/cjson_add
-  TARGET_PDB = cjson_add.dbg
+  TARGET_PDB = cJSON/tests/cjson_add.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target readme_examples
@@ -940,9 +1003,11 @@ build cJSON/tests/CMakeFiles/readme_examples.dir/readme_examples.c.o: C_COMPILER
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/readme_examples.dir/readme_examples.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/readme_examples.dir/
+  TARGET_PDB = cJSON/tests/readme_examples.pdb
 
 
 # =============================================================================
@@ -958,8 +1023,9 @@ build cJSON/tests/readme_examples: C_EXECUTABLE_LINKER__readme_examples_Debug cJ
   OBJECT_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/readme_examples.dir/
   TARGET_FILE = cJSON/tests/readme_examples
-  TARGET_PDB = readme_examples.dbg
+  TARGET_PDB = cJSON/tests/readme_examples.pdb
 
 # =============================================================================
 # Object build statements for EXECUTABLE target minify_tests
@@ -974,9 +1040,11 @@ build cJSON/tests/CMakeFiles/minify_tests.dir/minify_tests.c.o: C_COMPILER__mini
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/tests/CMakeFiles/minify_tests.dir/minify_tests.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
   OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/minify_tests.dir/
+  TARGET_PDB = cJSON/tests/minify_tests.pdb
 
 
 # =============================================================================
@@ -992,8 +1060,9 @@ build cJSON/tests/minify_tests: C_EXECUTABLE_LINKER__minify_tests_Debug cJSON/te
   OBJECT_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/tests/CMakeFiles/minify_tests.dir/
   TARGET_FILE = cJSON/tests/minify_tests
-  TARGET_PDB = minify_tests.dbg
+  TARGET_PDB = cJSON/tests/minify_tests.pdb
 
 
 #############################################
@@ -1078,17 +1147,21 @@ build cJSON/fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o: C_COMPILER__fuzz_mai
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
   OBJECT_FILE_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+  TARGET_COMPILE_PDB = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/
+  TARGET_PDB = cJSON/fuzzing/fuzz_main.pdb
 
 build cJSON/fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o: C_COMPILER__fuzz_main_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/fuzzing/cjson_read_fuzzer.c || cmake_object_order_depends_target_fuzz_main
   DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
   DEP_FILE = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o.d
   FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/Cellar/sdl2/2.30.3/include -I/opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
   OBJECT_FILE_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+  TARGET_COMPILE_PDB = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/
+  TARGET_PDB = cJSON/fuzzing/fuzz_main.pdb
 
 
 # =============================================================================
@@ -1104,8 +1177,9 @@ build cJSON/fuzzing/fuzz_main: C_EXECUTABLE_LINKER__fuzz_main_Debug cJSON/fuzzin
   OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
   POST_BUILD = :
   PRE_LINK = :
+  TARGET_COMPILE_PDB = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/
   TARGET_FILE = cJSON/fuzzing/fuzz_main
-  TARGET_PDB = fuzz_main.dbg
+  TARGET_PDB = cJSON/fuzzing/fuzz_main.pdb
 
 
 #############################################
@@ -1265,14 +1339,14 @@ build cJSON/tests/all: phony cJSON/tests/libunity.a cJSON/tests/parse_examples c
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCCompilerABI.c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystem.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Determine-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCCompilerABI.c /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystem.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Determine-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
 
 
 #############################################
