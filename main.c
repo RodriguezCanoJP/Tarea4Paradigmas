@@ -93,6 +93,26 @@ void setup(){
 void recibe_datos(){
     recv(newtwork_socket, &server_response, sizeof(server_response), 0);
     printf("%s\n", server_response);
+
+    int valread = read(newtwork_socket, &server_response, sizeof(server_response));
+    if (valread > 0) {
+        // Parse the JSON response
+        struct cJSON *response_json = cJSON_Parse(buffer);
+        if (response_json == NULL) {
+            printf("Error parsing JSON\n");
+        } else {
+            // Extract data from JSON
+            struct cJSON *received_int = cJSON_GetObjectItem(response_json, "received_int");
+            struct cJSON *received_float = cJSON_GetObjectItem(response_json, "received_float");
+
+            if (received_int && received_float) {
+                printf("Received int: %d\n", received_int ->valueint);
+                printf("Received float: %f\n", received_float->valuedouble);
+            }
+
+            cJSON_Delete(response_json);
+        }
+    }
 }
 
 void procesa_input(){
