@@ -83,7 +83,7 @@ public class server{
         server.clientes.get(numCliente).setIsActive(isActive);
     }
 
-    public synchronized static Socket getClienteAcceptSocket(Integer numCliente){
+    public static Socket getClienteAcceptSocket(Integer numCliente){
         try { 
             Socket inpuSocket = server.clientes.get(numCliente).getSocket().accept();
             return inpuSocket;
