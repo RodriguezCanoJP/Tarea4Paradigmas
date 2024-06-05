@@ -14,6 +14,19 @@
 # EXTERNAL cache entries
 ########################
 
+//Build both shared and static libraries
+BUILD_SHARED_AND_STATIC_LIBS:BOOL=OFF
+
+//Build shared libraries
+BUILD_SHARED_LIBS:BOOL=ON
+
+//Overrides BUILD_SHARED_LIBS if CJSON_OVERRIDE_BUILD_SHARED_LIBS
+// is enabled
+CJSON_BUILD_SHARED_LIBS:BOOL=ON
+
+//Override BUILD_SHARED_LIBS with CJSON_BUILD_SHARED_LIBS
+CJSON_OVERRIDE_BUILD_SHARED_LIBS:BOOL=OFF
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -81,11 +94,59 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
+//User executables (bin)
+CMAKE_INSTALL_BINDIR:PATH=bin
+
+//Read-only architecture-independent data (DATAROOTDIR)
+CMAKE_INSTALL_DATADIR:PATH=
+
+//Read-only architecture-independent data root (share)
+CMAKE_INSTALL_DATAROOTDIR:PATH=share
+
+//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
+CMAKE_INSTALL_DOCDIR:PATH=
+
+//C header files (include)
+CMAKE_INSTALL_INCLUDEDIR:PATH=include
+
+//Info documentation (DATAROOTDIR/info)
+CMAKE_INSTALL_INFODIR:PATH=
+
+//Object code libraries (lib)
+CMAKE_INSTALL_LIBDIR:PATH=lib
+
+//Program executables (libexec)
+CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
+
+//Locale-dependent data (DATAROOTDIR/locale)
+CMAKE_INSTALL_LOCALEDIR:PATH=
+
+//Modifiable single-machine data (var)
+CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
+
+//Man documentation (DATAROOTDIR/man)
+CMAKE_INSTALL_MANDIR:PATH=
+
 //Path to a program.
 CMAKE_INSTALL_NAME_TOOL:FILEPATH=/Users/juanpablorodriguez/opt/anaconda3/bin/install_name_tool
 
+//C header files for non-gcc (/usr/include)
+CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
+
+//Run-time variable data (LOCALSTATEDIR/run)
+CMAKE_INSTALL_RUNSTATEDIR:PATH=
+
+//System admin executables (sbin)
+CMAKE_INSTALL_SBINDIR:PATH=sbin
+
+//Modifiable architecture-independent data (com)
+CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
+
+//Read-only single-machine data (etc)
+CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
@@ -141,6 +202,21 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=PolePosition
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=1.7.18
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=7
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=18
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib
@@ -204,6 +280,46 @@ CMAKE_STRIP:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/Xcode
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enable building cJSON test
+ENABLE_CJSON_TEST:BOOL=ON
+
+//Enable creating uninstall target
+ENABLE_CJSON_UNINSTALL:BOOL=ON
+
+//Enable building the cJSON_Utils library.
+ENABLE_CJSON_UTILS:BOOL=OFF
+
+//Enables cJSON so version
+ENABLE_CJSON_VERSION_SO:BOOL=ON
+
+//Enables custom compiler flags
+ENABLE_CUSTOM_COMPILER_FLAGS:BOOL=ON
+
+//Create executables and targets for fuzzing cJSON with afl.
+ENABLE_FUZZING:BOOL=OFF
+
+//Hide library symbols.
+ENABLE_HIDDEN_SYMBOLS:BOOL=OFF
+
+//Enable the use of locales
+ENABLE_LOCALES:BOOL=ON
+
+//Export library symbols.
+ENABLE_PUBLIC_SYMBOLS:BOOL=ON
+
+//Enables the SafeStack instrumentation pass by the Code Pointer
+// Integrity Project
+ENABLE_SAFE_STACK:BOOL=OFF
+
+//Enables AddressSanitizer and UndefinedBehaviorSanitizer.
+ENABLE_SANITIZERS:BOOL=OFF
+
+//Enable exporting of CMake targets. Disable when it causes problems!
+ENABLE_TARGET_EXPORT:BOOL=ON
+
+//OFF
+ENABLE_VALGRIND:BOOL=OFF
+
 //Value Computed by CMake
 PolePosition_BINARY_DIR:STATIC=/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
 
@@ -215,6 +331,18 @@ PolePosition_SOURCE_DIR:STATIC=/Users/juanpablorodriguez/CLionProjects/PolePosit
 
 //The directory containing a CMake configuration file for SDL2.
 SDL2_DIR:PATH=/opt/homebrew/lib/cmake/SDL2
+
+//Value Computed by CMake
+cJSON_BINARY_DIR:STATIC=/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON
+
+//Value Computed by CMake
+cJSON_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+cJSON_SOURCE_DIR:STATIC=/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON
+
+//Dependencies for the target
+cjson_LIB_DEPENDS:STATIC=general;m;
 
 
 ########################
@@ -292,8 +420,40 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/Users/juanpablorodriguez/CLionProjects/PolePosition
+//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
+CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
+CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
+CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
+CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
+CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
+CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
+CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
+CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
+CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
+CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
+CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_NAME_TOOL
 CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
+CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
+CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
+CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
+CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
+CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -309,7 +469,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -352,4 +512,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Test FLAG_SUPPORTED_fvisibilityhidden
+FLAG_SUPPORTED_fvisibilityhidden:INTERNAL=1
+//CMAKE_INSTALL_PREFIX during last run
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
 

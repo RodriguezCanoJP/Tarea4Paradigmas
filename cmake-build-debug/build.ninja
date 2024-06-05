@@ -44,12 +44,12 @@ cmake_ninja_workdir = /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake
 #############################################
 # Order-only phony target for PolePosition
 
-build cmake_object_order_depends_target_PolePosition: phony || CMakeFiles/PolePosition.dir
+build cmake_object_order_depends_target_PolePosition: phony || cmake_object_order_depends_target_cjson
 
 build CMakeFiles/PolePosition.dir/main.c.o: C_COMPILER__PolePosition_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/main.c || cmake_object_order_depends_target_PolePosition
   DEP_FILE = CMakeFiles/PolePosition.dir/main.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2 -isystem /opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON -isystem /opt/homebrew/Cellar/sdl2/2.30.3/include/SDL2
   OBJECT_DIR = CMakeFiles/PolePosition.dir
   OBJECT_FILE_DIR = CMakeFiles/PolePosition.dir
 
@@ -61,9 +61,9 @@ build CMakeFiles/PolePosition.dir/main.c.o: C_COMPILER__PolePosition_Debug /User
 #############################################
 # Link the executable PolePosition
 
-build PolePosition: C_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePosition.dir/main.c.o | /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib
+build PolePosition: C_EXECUTABLE_LINKER__PolePosition_Debug CMakeFiles/PolePosition.dir/main.c.o | /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib cJSON/libcjson.1.7.18.dylib || cJSON/libcjson.dylib cJSON/libcjson.dylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.30.3/lib  /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib
+  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/Cellar/sdl2/2.30.3/lib -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  /opt/homebrew/Cellar/sdl2/2.30.3/lib/libSDL2.dylib  cJSON/libcjson.1.7.18.dylib  -lm
   LINK_PATH = -L/opt/homebrew/Cellar/sdl2/2.30.3/lib
   OBJECT_DIR = CMakeFiles/PolePosition.dir
   POST_BUILD = :
@@ -83,7 +83,7 @@ build cmake_object_order_depends_target_PolePositionServer: phony || CMakeFiles/
 build CMakeFiles/PolePositionServer.dir/servidor.c.o: C_COMPILER__PolePositionServer_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/servidor.c || cmake_object_order_depends_target_PolePositionServer
   DEP_FILE = CMakeFiles/PolePositionServer.dir/servidor.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
-  INCLUDES = -I/opt/homebrew/include/SDL2
+  INCLUDES = -I/opt/homebrew/include/SDL2 -I/Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON
   OBJECT_DIR = CMakeFiles/PolePositionServer.dir
   OBJECT_FILE_DIR = CMakeFiles/PolePositionServer.dir
 
@@ -126,8 +126,1106 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/juanpablorodriguez/CLionProjects/PolePosition/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target cjson
+
+
+#############################################
+# Order-only phony target for cjson
+
+build cmake_object_order_depends_target_cjson: phony || cJSON/CMakeFiles/cjson.dir
+
+build cJSON/CMakeFiles/cjson.dir/cJSON.c.o: C_COMPILER__cjson_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/cJSON.c || cmake_object_order_depends_target_cjson
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES -Dcjson_EXPORTS
+  DEP_FILE = cJSON/CMakeFiles/cjson.dir/cJSON.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -fPIC
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/CMakeFiles/cjson.dir
+  OBJECT_FILE_DIR = cJSON/CMakeFiles/cjson.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target cjson
+
+
+#############################################
+# Link the shared library cJSON/libcjson.1.7.18.dylib
+
+build cJSON/libcjson.1.7.18.dylib: C_SHARED_LIBRARY_LINKER__cjson_Debug cJSON/CMakeFiles/cjson.dir/cJSON.c.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INSTALLNAME_DIR = @rpath/
+  LANGUAGE_COMPILE_FLAGS = -fvisibility=hidden -g
+  LINK_FLAGS = -compatibility_version 1.0.0 -current_version 1.7.18
+  LINK_LIBRARIES = -lm
+  OBJECT_DIR = cJSON/CMakeFiles/cjson.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libcjson.1.dylib
+  SONAME_FLAG = -install_name
+  TARGET_FILE = cJSON/libcjson.1.7.18.dylib
+  TARGET_PDB = cjson.dylib.dbg
+
+
+#############################################
+# Create library symlink cJSON/libcjson.dylib
+
+build cJSON/libcjson.1.dylib cJSON/libcjson.dylib: CMAKE_SYMLINK_LIBRARY cJSON/libcjson.1.7.18.dylib
+  POST_BUILD = :
+
+# =============================================================================
+# Object build statements for EXECUTABLE target cJSON_test
+
+
+#############################################
+# Order-only phony target for cJSON_test
+
+build cmake_object_order_depends_target_cJSON_test: phony || cmake_object_order_depends_target_cjson
+
+build cJSON/CMakeFiles/cJSON_test.dir/test.c.o: C_COMPILER__cJSON_test_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/test.c || cmake_object_order_depends_target_cJSON_test
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/CMakeFiles/cJSON_test.dir/test.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/CMakeFiles/cJSON_test.dir
+  OBJECT_FILE_DIR = cJSON/CMakeFiles/cJSON_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target cJSON_test
+
+
+#############################################
+# Link the executable cJSON/cJSON_test
+
+build cJSON/cJSON_test: C_EXECUTABLE_LINKER__cJSON_test_Debug cJSON/CMakeFiles/cJSON_test.dir/test.c.o | cJSON/libcjson.1.7.18.dylib || cJSON/libcjson.dylib cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  -lm
+  OBJECT_DIR = cJSON/CMakeFiles/cJSON_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/cJSON_test
+  TARGET_PDB = cJSON_test.dbg
+
+
+#############################################
+# Utility command for check
+
+build cJSON/check: phony cJSON/CMakeFiles/check cJSON/cJSON_test cJSON/tests/cjson_add cJSON/tests/compare_tests cJSON/tests/minify_tests cJSON/tests/misc_tests cJSON/tests/parse_array cJSON/tests/parse_examples cJSON/tests/parse_hex4 cJSON/tests/parse_number cJSON/tests/parse_object cJSON/tests/parse_string cJSON/tests/parse_value cJSON/tests/parse_with_opts cJSON/tests/print_array cJSON/tests/print_number cJSON/tests/print_object cJSON/tests/print_string cJSON/tests/print_value cJSON/tests/readme_examples
+
+
+#############################################
+# Utility command for uninstall
+
+build cJSON/uninstall: phony cJSON/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for edit_cache
+
+build cJSON/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build cJSON/edit_cache: phony cJSON/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build cJSON/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/juanpablorodriguez/CLionProjects/PolePosition -B/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build cJSON/rebuild_cache: phony cJSON/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build cJSON/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build cJSON/CMakeFiles/install.util: CUSTOM_COMMAND cJSON/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build cJSON/install: phony cJSON/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build cJSON/CMakeFiles/install/local.util: CUSTOM_COMMAND cJSON/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build cJSON/install/local: phony cJSON/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build cJSON/CMakeFiles/install/strip.util: CUSTOM_COMMAND cJSON/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build cJSON/install/strip: phony cJSON/CMakeFiles/install/strip.util
+
+
+#############################################
+# Custom command for cJSON/CMakeFiles/check
+
+build cJSON/CMakeFiles/check | ${cmake_ninja_workdir}cJSON/CMakeFiles/check: CUSTOM_COMMAND cJSON/cJSON_test || cJSON/cJSON_test cJSON/libcjson.dylib cJSON/tests/cjson_add cJSON/tests/compare_tests cJSON/tests/libunity.a cJSON/tests/minify_tests cJSON/tests/misc_tests cJSON/tests/parse_array cJSON/tests/parse_examples cJSON/tests/parse_hex4 cJSON/tests/parse_number cJSON/tests/parse_object cJSON/tests/parse_string cJSON/tests/parse_value cJSON/tests/parse_with_opts cJSON/tests/print_array cJSON/tests/print_number cJSON/tests/print_object cJSON/tests/print_string cJSON/tests/print_value cJSON/tests/readme_examples
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/ctest --output-on-failure
+
+
+#############################################
+# Custom command for cJSON/CMakeFiles/uninstall
+
+build cJSON/CMakeFiles/uninstall | ${cmake_ninja_workdir}cJSON/CMakeFiles/uninstall: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/library_config/uninstall.cmake
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target unity
+
+
+#############################################
+# Order-only phony target for unity
+
+build cmake_object_order_depends_target_unity: phony || cJSON/tests/CMakeFiles/unity.dir
+
+build cJSON/tests/CMakeFiles/unity.dir/unity/src/unity.c.o: C_COMPILER__unity_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/unity/src/unity.c || cmake_object_order_depends_target_unity
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/unity.dir/unity/src/unity.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk -fvisibility=default
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/unity.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/unity.dir/unity/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target unity
+
+
+#############################################
+# Link the static library cJSON/tests/libunity.a
+
+build cJSON/tests/libunity.a: C_STATIC_LIBRARY_LINKER__unity_Debug cJSON/tests/CMakeFiles/unity.dir/unity/src/unity.c.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LANGUAGE_COMPILE_FLAGS = -fvisibility=hidden -g
+  OBJECT_DIR = cJSON/tests/CMakeFiles/unity.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/libunity.a
+  TARGET_PDB = unity.a.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_examples
+
+
+#############################################
+# Order-only phony target for parse_examples
+
+build cmake_object_order_depends_target_parse_examples: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_examples.dir/parse_examples.c.o: C_COMPILER__parse_examples_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_examples.c || cmake_object_order_depends_target_parse_examples
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_examples.dir/parse_examples.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_examples
+
+
+#############################################
+# Link the executable cJSON/tests/parse_examples
+
+build cJSON/tests/parse_examples: C_EXECUTABLE_LINKER__parse_examples_Debug cJSON/tests/CMakeFiles/parse_examples.dir/parse_examples.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_examples.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_examples
+  TARGET_PDB = parse_examples.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_number
+
+
+#############################################
+# Order-only phony target for parse_number
+
+build cmake_object_order_depends_target_parse_number: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_number.dir/parse_number.c.o: C_COMPILER__parse_number_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_number.c || cmake_object_order_depends_target_parse_number
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_number.dir/parse_number.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_number.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_number.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_number
+
+
+#############################################
+# Link the executable cJSON/tests/parse_number
+
+build cJSON/tests/parse_number: C_EXECUTABLE_LINKER__parse_number_Debug cJSON/tests/CMakeFiles/parse_number.dir/parse_number.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_number.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_number
+  TARGET_PDB = parse_number.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_hex4
+
+
+#############################################
+# Order-only phony target for parse_hex4
+
+build cmake_object_order_depends_target_parse_hex4: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o: C_COMPILER__parse_hex4_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_hex4.c || cmake_object_order_depends_target_parse_hex4
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_hex4
+
+
+#############################################
+# Link the executable cJSON/tests/parse_hex4
+
+build cJSON/tests/parse_hex4: C_EXECUTABLE_LINKER__parse_hex4_Debug cJSON/tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_hex4.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_hex4
+  TARGET_PDB = parse_hex4.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_string
+
+
+#############################################
+# Order-only phony target for parse_string
+
+build cmake_object_order_depends_target_parse_string: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_string.dir/parse_string.c.o: C_COMPILER__parse_string_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_string.c || cmake_object_order_depends_target_parse_string
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_string.dir/parse_string.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_string.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_string.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_string
+
+
+#############################################
+# Link the executable cJSON/tests/parse_string
+
+build cJSON/tests/parse_string: C_EXECUTABLE_LINKER__parse_string_Debug cJSON/tests/CMakeFiles/parse_string.dir/parse_string.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_string.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_string
+  TARGET_PDB = parse_string.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_array
+
+
+#############################################
+# Order-only phony target for parse_array
+
+build cmake_object_order_depends_target_parse_array: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_array.dir/parse_array.c.o: C_COMPILER__parse_array_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_array.c || cmake_object_order_depends_target_parse_array
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_array.dir/parse_array.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_array.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_array.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_array
+
+
+#############################################
+# Link the executable cJSON/tests/parse_array
+
+build cJSON/tests/parse_array: C_EXECUTABLE_LINKER__parse_array_Debug cJSON/tests/CMakeFiles/parse_array.dir/parse_array.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_array.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_array
+  TARGET_PDB = parse_array.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_object
+
+
+#############################################
+# Order-only phony target for parse_object
+
+build cmake_object_order_depends_target_parse_object: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_object.dir/parse_object.c.o: C_COMPILER__parse_object_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_object.c || cmake_object_order_depends_target_parse_object
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_object.dir/parse_object.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_object.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_object.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_object
+
+
+#############################################
+# Link the executable cJSON/tests/parse_object
+
+build cJSON/tests/parse_object: C_EXECUTABLE_LINKER__parse_object_Debug cJSON/tests/CMakeFiles/parse_object.dir/parse_object.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_object.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_object
+  TARGET_PDB = parse_object.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_value
+
+
+#############################################
+# Order-only phony target for parse_value
+
+build cmake_object_order_depends_target_parse_value: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_value.dir/parse_value.c.o: C_COMPILER__parse_value_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_value.c || cmake_object_order_depends_target_parse_value
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_value.dir/parse_value.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_value.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_value.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_value
+
+
+#############################################
+# Link the executable cJSON/tests/parse_value
+
+build cJSON/tests/parse_value: C_EXECUTABLE_LINKER__parse_value_Debug cJSON/tests/CMakeFiles/parse_value.dir/parse_value.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_value.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_value
+  TARGET_PDB = parse_value.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target print_string
+
+
+#############################################
+# Order-only phony target for print_string
+
+build cmake_object_order_depends_target_print_string: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/print_string.dir/print_string.c.o: C_COMPILER__print_string_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/print_string.c || cmake_object_order_depends_target_print_string
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/print_string.dir/print_string.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_string.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_string.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target print_string
+
+
+#############################################
+# Link the executable cJSON/tests/print_string
+
+build cJSON/tests/print_string: C_EXECUTABLE_LINKER__print_string_Debug cJSON/tests/CMakeFiles/print_string.dir/print_string.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_string.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/print_string
+  TARGET_PDB = print_string.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target print_number
+
+
+#############################################
+# Order-only phony target for print_number
+
+build cmake_object_order_depends_target_print_number: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/print_number.dir/print_number.c.o: C_COMPILER__print_number_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/print_number.c || cmake_object_order_depends_target_print_number
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/print_number.dir/print_number.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_number.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_number.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target print_number
+
+
+#############################################
+# Link the executable cJSON/tests/print_number
+
+build cJSON/tests/print_number: C_EXECUTABLE_LINKER__print_number_Debug cJSON/tests/CMakeFiles/print_number.dir/print_number.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_number.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/print_number
+  TARGET_PDB = print_number.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target print_array
+
+
+#############################################
+# Order-only phony target for print_array
+
+build cmake_object_order_depends_target_print_array: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/print_array.dir/print_array.c.o: C_COMPILER__print_array_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/print_array.c || cmake_object_order_depends_target_print_array
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/print_array.dir/print_array.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_array.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_array.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target print_array
+
+
+#############################################
+# Link the executable cJSON/tests/print_array
+
+build cJSON/tests/print_array: C_EXECUTABLE_LINKER__print_array_Debug cJSON/tests/CMakeFiles/print_array.dir/print_array.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_array.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/print_array
+  TARGET_PDB = print_array.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target print_object
+
+
+#############################################
+# Order-only phony target for print_object
+
+build cmake_object_order_depends_target_print_object: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/print_object.dir/print_object.c.o: C_COMPILER__print_object_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/print_object.c || cmake_object_order_depends_target_print_object
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/print_object.dir/print_object.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_object.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_object.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target print_object
+
+
+#############################################
+# Link the executable cJSON/tests/print_object
+
+build cJSON/tests/print_object: C_EXECUTABLE_LINKER__print_object_Debug cJSON/tests/CMakeFiles/print_object.dir/print_object.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_object.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/print_object
+  TARGET_PDB = print_object.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target print_value
+
+
+#############################################
+# Order-only phony target for print_value
+
+build cmake_object_order_depends_target_print_value: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/print_value.dir/print_value.c.o: C_COMPILER__print_value_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/print_value.c || cmake_object_order_depends_target_print_value
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/print_value.dir/print_value.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_value.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/print_value.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target print_value
+
+
+#############################################
+# Link the executable cJSON/tests/print_value
+
+build cJSON/tests/print_value: C_EXECUTABLE_LINKER__print_value_Debug cJSON/tests/CMakeFiles/print_value.dir/print_value.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/print_value.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/print_value
+  TARGET_PDB = print_value.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target misc_tests
+
+
+#############################################
+# Order-only phony target for misc_tests
+
+build cmake_object_order_depends_target_misc_tests: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/misc_tests.dir/misc_tests.c.o: C_COMPILER__misc_tests_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/misc_tests.c || cmake_object_order_depends_target_misc_tests
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/misc_tests.dir/misc_tests.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target misc_tests
+
+
+#############################################
+# Link the executable cJSON/tests/misc_tests
+
+build cJSON/tests/misc_tests: C_EXECUTABLE_LINKER__misc_tests_Debug cJSON/tests/CMakeFiles/misc_tests.dir/misc_tests.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/misc_tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/misc_tests
+  TARGET_PDB = misc_tests.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target parse_with_opts
+
+
+#############################################
+# Order-only phony target for parse_with_opts
+
+build cmake_object_order_depends_target_parse_with_opts: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o: C_COMPILER__parse_with_opts_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/parse_with_opts.c || cmake_object_order_depends_target_parse_with_opts
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target parse_with_opts
+
+
+#############################################
+# Link the executable cJSON/tests/parse_with_opts
+
+build cJSON/tests/parse_with_opts: C_EXECUTABLE_LINKER__parse_with_opts_Debug cJSON/tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/parse_with_opts.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/parse_with_opts
+  TARGET_PDB = parse_with_opts.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target compare_tests
+
+
+#############################################
+# Order-only phony target for compare_tests
+
+build cmake_object_order_depends_target_compare_tests: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/compare_tests.dir/compare_tests.c.o: C_COMPILER__compare_tests_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/compare_tests.c || cmake_object_order_depends_target_compare_tests
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/compare_tests.dir/compare_tests.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target compare_tests
+
+
+#############################################
+# Link the executable cJSON/tests/compare_tests
+
+build cJSON/tests/compare_tests: C_EXECUTABLE_LINKER__compare_tests_Debug cJSON/tests/CMakeFiles/compare_tests.dir/compare_tests.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/compare_tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/compare_tests
+  TARGET_PDB = compare_tests.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target cjson_add
+
+
+#############################################
+# Order-only phony target for cjson_add
+
+build cmake_object_order_depends_target_cjson_add: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/cjson_add.dir/cjson_add.c.o: C_COMPILER__cjson_add_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/cjson_add.c || cmake_object_order_depends_target_cjson_add
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/cjson_add.dir/cjson_add.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target cjson_add
+
+
+#############################################
+# Link the executable cJSON/tests/cjson_add
+
+build cJSON/tests/cjson_add: C_EXECUTABLE_LINKER__cjson_add_Debug cJSON/tests/CMakeFiles/cjson_add.dir/cjson_add.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/cjson_add.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/cjson_add
+  TARGET_PDB = cjson_add.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target readme_examples
+
+
+#############################################
+# Order-only phony target for readme_examples
+
+build cmake_object_order_depends_target_readme_examples: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/readme_examples.dir/readme_examples.c.o: C_COMPILER__readme_examples_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/readme_examples.c || cmake_object_order_depends_target_readme_examples
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/readme_examples.dir/readme_examples.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target readme_examples
+
+
+#############################################
+# Link the executable cJSON/tests/readme_examples
+
+build cJSON/tests/readme_examples: C_EXECUTABLE_LINKER__readme_examples_Debug cJSON/tests/CMakeFiles/readme_examples.dir/readme_examples.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/readme_examples.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/readme_examples
+  TARGET_PDB = readme_examples.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target minify_tests
+
+
+#############################################
+# Order-only phony target for minify_tests
+
+build cmake_object_order_depends_target_minify_tests: phony || cmake_object_order_depends_target_cjson cmake_object_order_depends_target_unity
+
+build cJSON/tests/CMakeFiles/minify_tests.dir/minify_tests.c.o: C_COMPILER__minify_tests_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/tests/minify_tests.c || cmake_object_order_depends_target_minify_tests
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/tests/CMakeFiles/minify_tests.dir/minify_tests.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
+  OBJECT_FILE_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target minify_tests
+
+
+#############################################
+# Link the executable cJSON/tests/minify_tests
+
+build cJSON/tests/minify_tests: C_EXECUTABLE_LINKER__minify_tests_Debug cJSON/tests/CMakeFiles/minify_tests.dir/minify_tests.c.o | cJSON/libcjson.1.7.18.dylib cJSON/tests/libunity.a || cJSON/libcjson.dylib cJSON/tests/libunity.a cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  cJSON/tests/libunity.a  -lm
+  OBJECT_DIR = cJSON/tests/CMakeFiles/minify_tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/tests/minify_tests
+  TARGET_PDB = minify_tests.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build cJSON/tests/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build cJSON/tests/edit_cache: phony cJSON/tests/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build cJSON/tests/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/juanpablorodriguez/CLionProjects/PolePosition -B/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build cJSON/tests/rebuild_cache: phony cJSON/tests/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build cJSON/tests/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build cJSON/tests/CMakeFiles/install.util: CUSTOM_COMMAND cJSON/tests/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build cJSON/tests/install: phony cJSON/tests/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build cJSON/tests/CMakeFiles/install/local.util: CUSTOM_COMMAND cJSON/tests/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build cJSON/tests/install/local: phony cJSON/tests/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build cJSON/tests/CMakeFiles/install/strip.util: CUSTOM_COMMAND cJSON/tests/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build cJSON/tests/install/strip: phony cJSON/tests/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target fuzz_main
+
+
+#############################################
+# Order-only phony target for fuzz_main
+
+build cmake_object_order_depends_target_fuzz_main: phony || cmake_object_order_depends_target_cjson
+
+build cJSON/fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o: C_COMPILER__fuzz_main_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/fuzzing/fuzz_main.c || cmake_object_order_depends_target_fuzz_main
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+  OBJECT_FILE_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+
+build cJSON/fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o: C_COMPILER__fuzz_main_Debug /Users/juanpablorodriguez/CLionProjects/PolePosition/cJSON/fuzzing/cjson_read_fuzzer.c || cmake_object_order_depends_target_fuzz_main
+  DEFINES = -DCJSON_API_VISIBILITY -DCJSON_EXPORT_SYMBOLS -DENABLE_LOCALES
+  DEP_FILE = cJSON/fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o.d
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  INCLUDES = -I/opt/homebrew/include/SDL2
+  OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+  OBJECT_FILE_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target fuzz_main
+
+
+#############################################
+# Link the executable cJSON/fuzzing/fuzz_main
+
+build cJSON/fuzzing/fuzz_main: C_EXECUTABLE_LINKER__fuzz_main_Debug cJSON/fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o cJSON/fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o | cJSON/libcjson.1.7.18.dylib || cJSON/libcjson.dylib cJSON/libcjson.dylib
+  FLAGS = -fvisibility=hidden -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk
+  LINK_LIBRARIES = -Wl,-rpath,/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON  cJSON/libcjson.1.7.18.dylib  -lm
+  OBJECT_DIR = cJSON/fuzzing/CMakeFiles/fuzz_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = cJSON/fuzzing/fuzz_main
+  TARGET_PDB = fuzz_main.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build cJSON/fuzzing/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build cJSON/fuzzing/edit_cache: phony cJSON/fuzzing/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build cJSON/fuzzing/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/juanpablorodriguez/CLionProjects/PolePosition -B/Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build cJSON/fuzzing/rebuild_cache: phony cJSON/fuzzing/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build cJSON/fuzzing/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build cJSON/fuzzing/CMakeFiles/install.util: CUSTOM_COMMAND cJSON/fuzzing/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build cJSON/fuzzing/install: phony cJSON/fuzzing/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build cJSON/fuzzing/CMakeFiles/install/local.util: CUSTOM_COMMAND cJSON/fuzzing/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build cJSON/fuzzing/install/local: phony cJSON/fuzzing/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build cJSON/fuzzing/CMakeFiles/install/strip.util: CUSTOM_COMMAND cJSON/fuzzing/all
+  COMMAND = cd /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build cJSON/fuzzing/install/strip: phony cJSON/fuzzing/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build cJSON_test: phony cJSON/cJSON_test
+
+build check: phony cJSON/check
+
+build cjson: phony cJSON/libcjson.dylib
+
+build cjson_add: phony cJSON/tests/cjson_add
+
+build compare_tests: phony cJSON/tests/compare_tests
+
+build fuzz_main: phony cJSON/fuzzing/fuzz_main
+
+build libcjson.dylib: phony cJSON/libcjson.dylib
+
+build libunity.a: phony cJSON/tests/libunity.a
+
+build minify_tests: phony cJSON/tests/minify_tests
+
+build misc_tests: phony cJSON/tests/misc_tests
+
+build parse_array: phony cJSON/tests/parse_array
+
+build parse_examples: phony cJSON/tests/parse_examples
+
+build parse_hex4: phony cJSON/tests/parse_hex4
+
+build parse_number: phony cJSON/tests/parse_number
+
+build parse_object: phony cJSON/tests/parse_object
+
+build parse_string: phony cJSON/tests/parse_string
+
+build parse_value: phony cJSON/tests/parse_value
+
+build parse_with_opts: phony cJSON/tests/parse_with_opts
+
+build print_array: phony cJSON/tests/print_array
+
+build print_number: phony cJSON/tests/print_number
+
+build print_object: phony cJSON/tests/print_object
+
+build print_string: phony cJSON/tests/print_string
+
+build print_value: phony cJSON/tests/print_value
+
+build readme_examples: phony cJSON/tests/readme_examples
+
+build uninstall: phony cJSON/uninstall
+
+build unity: phony cJSON/tests/libunity.a
 
 # =============================================================================
 # Folder targets.
@@ -137,7 +1235,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug
 
-build all: phony PolePosition PolePositionServer
+build all: phony PolePosition PolePositionServer cJSON/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON
+
+build cJSON/all: phony cJSON/libcjson.dylib cJSON/cJSON_test cJSON/tests/all cJSON/fuzzing/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/fuzzing
+
+build cJSON/fuzzing/all: phony cJSON/fuzzing/fuzz_main
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/cJSON/tests
+
+build cJSON/tests/all: phony cJSON/tests/libunity.a cJSON/tests/parse_examples cJSON/tests/parse_number cJSON/tests/parse_hex4 cJSON/tests/parse_string cJSON/tests/parse_array cJSON/tests/parse_object cJSON/tests/parse_value cJSON/tests/print_string cJSON/tests/print_number cJSON/tests/print_array cJSON/tests/print_object cJSON/tests/print_value cJSON/tests/misc_tests cJSON/tests/parse_with_opts cJSON/tests/compare_tests cJSON/tests/cjson_add cJSON/tests/readme_examples cJSON/tests/minify_tests
 
 # =============================================================================
 # Built-in targets
@@ -146,14 +1265,14 @@ build all: phony PolePosition PolePositionServer
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+build ../CMakeLists.txt ../cJSON/CMakeLists.txt ../cJSON/fuzzing/CMakeLists.txt ../cJSON/library_config/cJSONConfig.cmake.in ../cJSON/library_config/cJSONConfigVersion.cmake.in ../cJSON/library_config/libcjson.pc.in ../cJSON/tests/CMakeLists.txt /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/FeatureSummary.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckCompilerFlag.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckFlagCommonConfig.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.23/Modules/Platform/UnixPaths.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake /opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
 
 
 #############################################

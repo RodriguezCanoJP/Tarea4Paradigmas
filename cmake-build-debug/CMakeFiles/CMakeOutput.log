@@ -248,3 +248,12 @@ Parsed CXX implicit link information from above output:
   implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.0.sdk/System/Library/Frameworks]
 
 
+Performing C SOURCE FILE Test FLAG_SUPPORTED_fvisibilityhidden succeeded with the following output:
+Change Dir: /Users/juanpablorodriguez/CLionProjects/PolePosition/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_1d6a9 && [1/2] Building C object CMakeFiles/cmTC_1d6a9.dir/src.c.o
+[2/2] Linking C executable cmTC_1d6a9
+
+
+Source file was:
+int main(void) { return 0; }

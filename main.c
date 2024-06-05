@@ -217,8 +217,18 @@ void render(){
 }
 
 void enviar_datos(){
-    sprintf(server_response, "%i%f\n", pista.nseccion, car.distancia);
-    send(newtwork_socket, &server_response, sizeof(server_response), 0);
+    struct cJSON *json = cJSON_CreateObject();
+    cJSON_AddNumberToObject(json, "seccion", pista.nseccion);
+    cJSON_AddNumberToObject(json, "distancia", car.distancia);
+
+    char *json_string = cJSON_Print(json);
+
+    send(newtwork_socket, json_string, strlen(json_string), 0);
+    printf("JSON data sent to server\n");
+
+    free(json_string);
+    cJSON_Delete(json);
+
 }
 
 void destruye_ventana(){
