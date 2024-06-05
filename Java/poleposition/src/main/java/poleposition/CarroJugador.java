@@ -9,13 +9,17 @@ public class CarroJugador extends Carro {
     //metodos 
     @Override
     public void acelerar(){
-        //logica
+        velocidad += 10;
+        System.out.println("acelerando" + velocidad);
     }
     @Override
     public void frenar(){
 
-        //logica para frenar
-        System.out.println("Frenando...");
+        velocidad -= 10;
+        System.out.println("Frenando..." );
+        if (velocidad < 0) velocidad = 0;
+            System.out.println("parado" + velocidad);
+        
 
     }
     @Override

@@ -2,7 +2,7 @@ package poleposition;
 
 public abstract class Carro {
     //atributos
-    protected float distancia;
+    protected Float distancia;
     protected float velocidad;
     protected float posicion;
     protected int posx;
@@ -19,6 +19,8 @@ public abstract class Carro {
 
     public Carro(){
         this.vida = 3;
+        this.velocidad = 0;
+        this.color = "rojo";
     }
 
     public void recibirDisparo(){
@@ -34,7 +36,9 @@ public abstract class Carro {
         return vida;
     }
     public void setVida(int vida){
-        this.vida = vida;
+        if (vida >= 0){
+            this.vida = vida;
+        }
     }
     public float  getVelocidad(){
 
@@ -42,8 +46,10 @@ public abstract class Carro {
     }
     public void setVelocidad(int velocidad){
 
-        this.velocidad = velocidad;
-
+        if(velocidad >= 0){
+            this.velocidad = velocidad;
+        }
+        
     }
     public String getColor(){
 
