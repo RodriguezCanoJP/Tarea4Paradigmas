@@ -5,7 +5,7 @@ import java.io.DataOutputStream;
 import java.net.*;
 import org.json.*;
 
-public class InnerServer extends Thread{
+public class InnerServer implements Runnable{
 
     private Integer clienteServerNum;
 
@@ -34,7 +34,7 @@ public class InnerServer extends Thread{
                     System.out.println("Activando cliente " + clienteServerNum);
                     server.setClienteActive(true, clienteServerNum);
                 }
-                Thread.sleep(100);
+                Thread.yield(); 
             } 
         } catch (Exception e) {
             System.out.println(e.toString());

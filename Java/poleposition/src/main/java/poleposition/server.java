@@ -68,7 +68,7 @@ public class server{
      * 
      * @return boolean de si todos los clientes del server estan activos
      */
-    public static Boolean allClientesActive(){
+    public synchronized static Boolean allClientesActive(){
         Boolean allActive = true;
         for (cliente c : server.clientes) {
             if(!c.getIsActive()){
@@ -79,11 +79,11 @@ public class server{
     }
 
 
-    public static void setClienteActive(Boolean isActive, Integer numCliente){
+    public synchronized static void setClienteActive(Boolean isActive, Integer numCliente){
         server.clientes.get(numCliente).setIsActive(isActive);
     }
 
-    public static Socket getClienteAcceptSocket(Integer numCliente){
+    public synchronized static Socket getClienteAcceptSocket(Integer numCliente){
         try { 
             Socket inpuSocket = server.clientes.get(numCliente).getSocket().accept();
             return inpuSocket;
@@ -97,9 +97,8 @@ public class server{
     public void serverRun(){
         try {
             Boolean close = false;
-            while(close == false){ 
-                server.allClientesActive();
-                if((clientes.isEmpty() || server.allClientesActive()) && (clientes.size() < 4)){
+            while(close == false){
+                if((server.allClientesActive() || clientes.isEmpty()) && (clientes.size() < 4)){
 
                     //cree un nuevo socket para el cliente
                     ServerSocket newSS = new ServerSocket(0);
@@ -119,7 +118,8 @@ public class server{
 
                     //se crea thread para socket 
                     InnerServer newSocketWR = new InnerServer(cliente.getNumClientes());
-                    newSocketWR.start();
+                    Thread newThread = new Thread(newSocketWR);
+                    newThread.start();
 
                     cliente.addCliente();
                     System.out.println("Server " + clientes.size());
