@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="poleposition.AppTest" time="0.031" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="poleposition.AppTest" time="0.033" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-22-oracle-x64/lib"/>
-    <property name="sun.java.command" value="/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire/surefirebooter12241717186264909394.jar /home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire 2024-06-03T21-55-40_391-jvmRun1 surefire6886865335376951681tmp surefire_03088751478628612269tmp"/>
+    <property name="sun.java.command" value="/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire/surefirebooter15888904345216220929.jar /home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire 2024-06-04T17-53-08_760-jvmRun1 surefire8041514863206722897tmp surefire_01538430629830857361tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/test-classes:/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/classes:/home/jose/.m2/repository/org/json/json/20240303/json-20240303.jar:/home/jose/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/jose/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire/surefirebooter12241717186264909394.jar"/>
+    <property name="surefire.real.class.path" value="/home/jose/Documents/Tarea4Paradigmas/Java/poleposition/target/surefire/surefirebooter15888904345216220929.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.1+8-16"/>
     <property name="user.name" value="jose"/>
@@ -53,5 +53,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="shouldAnswerWithTrue" classname="poleposition.AppTest" time="0.003"/>
+  <testcase name="shouldAnswerWithTrue" classname="poleposition.AppTest" time="0.005"/>
 </testsuite>

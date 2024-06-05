@@ -1,7 +1,5 @@
 package poleposition;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
@@ -13,7 +11,7 @@ import org.json.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class server {
+public class server{
     private static server serverInstace;
     private static ArrayList<cliente> clientes;
     private static Pista pista;
@@ -72,21 +70,36 @@ public class server {
      */
     public static Boolean allClientesActive(){
         Boolean allActive = true;
-        for (cliente cliente : clientes) {
-            if(!cliente.isActive){
+        for (cliente c : server.clientes) {
+            if(!c.getIsActive()){
                 allActive = false;
             }
         }
         return allActive;
     }
 
+
+    public static void setClienteActive(Boolean isActive, Integer numCliente){
+        server.clientes.get(numCliente).setIsActive(isActive);
+    }
+
+    public static Socket getClienteAcceptSocket(Integer numCliente){
+        try { 
+            Socket inpuSocket = server.clientes.get(numCliente).getSocket().accept();
+            return inpuSocket;
+        } catch (Exception e) {
+            System.out.println("getClienteAcceptSocket");
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+
     public void serverRun(){
         try {
             Boolean close = false;
             while(close == false){ 
-                if(clientes.isEmpty() || server.allClientesActive()){
-                    //añada un cliente mas a la clase cliente
-                    cliente.addCliente();
+                server.allClientesActive();
+                if((clientes.isEmpty() || server.allClientesActive()) && (clientes.size() < 4)){
 
                     //cree un nuevo socket para el cliente
                     ServerSocket newSS = new ServerSocket(0);
@@ -102,20 +115,21 @@ public class server {
                     //guarde el valor del port y el cliente en lista
                     cliente newJugador = new cliente(newSS, cliente.getNumClientes());
                     clientes.add(newJugador);
-                }
-                
-                for (cliente cliente : clientes) {
-                    StringBuilder texto = new StringBuilder();
-                    Socket inputSocket = cliente.getSocket().accept();
-                    DataInputStream input = new DataInputStream(inputSocket.getInputStream());
-                    String inputString = input.readUTF();
-                    texto.append(inputString);
-                    input.close(); 
-                }                
 
+
+                    //se crea thread para socket 
+                    InnerServer newSocketWR = new InnerServer(cliente.getNumClientes());
+                    newSocketWR.start();
+
+                    cliente.addCliente();
+                    System.out.println("Server " + clientes.size());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }
+
