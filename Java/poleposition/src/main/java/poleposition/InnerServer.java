@@ -1,11 +1,10 @@
 package poleposition;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.*;
 import java.net.*;
 import org.json.*;
 
-public class InnerServer implements Runnable{
+public class InnerServer extends Thread {
 
     private Integer clienteServerNum;
 
@@ -15,29 +14,46 @@ public class InnerServer implements Runnable{
 
     @Override
     public void run(){
+        Boolean isClosed = true;
+        Socket inputSocket = server.getClienteAcceptSocket(clienteServerNum);
         try {
-            Boolean isClosed = false;
-            while (isClosed == false) {
-                System.out.println("Start");
-                //se lee datos de entrada
-                StringBuilder texto = new StringBuilder();
-                Socket inputSocket = server.getClienteAcceptSocket(clienteServerNum);
-                System.out.println("Finish");
-                DataInputStream input = new DataInputStream(inputSocket.getInputStream());
-                String inputString = input.readUTF();
-                texto.append(inputString);
-                System.out.println(inputString);
-                input.close(); 
-                //se convierten a json 
-                JSONObject inputJson = new JSONObject(inputString);
-                if(inputJson.has("isActive") && inputJson.getBoolean("isActive") == true){
-                    System.out.println("Activando cliente " + clienteServerNum);
-                    server.setClienteActive(true, clienteServerNum);
+            InputStream in = inputSocket.getInputStream();
+            while (isClosed) {
+                try {
+
+                    ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                    byte[] data = new byte[1024];
+                    int bytesRead;
+
+
+                    while ((bytesRead = in.read(data, 0, data.length)) != -1) {
+                        buffer.write(data, 0, bytesRead);
+                        if (in.available() == 0) {
+                            break; // Exit loop if no more data is available
+                        }
+                    }
+                    // Convert buffer to string and print the received message
+                    String receivedMessage = buffer.toString("UTF-8");
+                    JSONObject inputJson = new JSONObject(receivedMessage);
+                    if (inputJson.has("isActive") && inputJson.getBoolean("isActive") == true) {
+                        System.out.println("Activando cliente " + clienteServerNum);
+                        server.setClienteActive(true, clienteServerNum);
+                    }
+
+                    buffer.close();
+
+
+                } catch (IOException e) {
+                    System.err.println("IOException: " + e.getMessage());
                 }
-                Thread.yield(); 
-            } 
-        } catch (Exception e) {
-            System.out.println(e.toString());
+            }
+            in.close();
+            inputSocket.close();
+        }catch (IOException e){
+            System.err.println("IOException: " + e.getMessage());
         }
+        //Thread.yield();
+
+
     }                
 }
