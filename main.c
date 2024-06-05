@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include "cJSON.h"
 #include "constants.h"
 
 SDL_Window *window = NULL;
@@ -10,7 +11,6 @@ SDL_Renderer *renderer = NULL;
 char server_response[32];
 int newtwork_socket;
 int juego_corriendo = FALSE;
-int num_oponentes = 1;
 float ultimo_tiempo = 0.0f;
 float curvaturaActual = 0;
 float curvaturaPista = 0;
@@ -139,13 +139,20 @@ void actualiza(){
     if(tiempo_de_espera>0 && tiempo_de_espera<=FRAME_TARGET_TIME) {
         SDL_Delay(FRAME_TARGET_TIME);
     }
+
     float delta_time = ((float)SDL_GetTicks() - ultimo_tiempo)/1000.0f;
     car.distancia += delta_time * car.velocidad;
+
     if(car.distancia >= pista.distancia){
         car.distancia = 0;
         pista.nseccion +=1;
         pista.curvatura = secciones[pista.nseccion][1];
     }
+
+    if(pista.nseccion >= 10){
+        pista.nseccion = 0;
+    }
+
     ultimo_tiempo = (float)SDL_GetTicks();
     float diffCurvas = (pista.curvatura - curvaturaActual) * delta_time;
     curvaturaActual += diffCurvas;
@@ -156,8 +163,6 @@ void actualiza(){
     if(car.posx < 0 || car.posx >= WINDOW_WIDTH - CAR_WIDTH){
         car.velocidad = 5.0f;
     }
-
-    recibe_datos();
 }
 
 void render(){
@@ -212,7 +217,7 @@ void render(){
 }
 
 void enviar_datos(){
-    sprintf(server_response, "%i%f", pista.nseccion, car.distancia);
+    sprintf(server_response, "%i%f\n", pista.nseccion, car.distancia);
     send(newtwork_socket, &server_response, sizeof(server_response), 0);
 }
 
@@ -226,13 +231,14 @@ int main() {
     juego_corriendo = initializa_ventana();
     setup();
     conexion_socket();
-
     while(juego_corriendo){
         procesa_input();
         actualiza();
         render();
         enviar_datos();
     }
+    sprintf(server_response, "0", pista.nseccion, car.distancia);
+    send(newtwork_socket, &server_response, sizeof(server_response), 0);
     close(newtwork_socket);
     destruye_ventana();
     return 0;
