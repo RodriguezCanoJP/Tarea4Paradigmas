@@ -67,7 +67,7 @@ int initializa_ventana(){
         return FALSE;
     }
 
-    SDL_Surface *surface = SDL_LoadBMP("Resources/PolePositionCar.bmp");
+    SDL_Surface *surface = SDL_LoadBMP("/Users/juanpablorodriguez/CLionProjects/PolePosition/Resources/PolePositionCar.bmp");
 
     if (!surface) {
         fprintf(stderr, "Error al cargar la imagen del sprite. SDL_Error: %s\n", SDL_GetError());
